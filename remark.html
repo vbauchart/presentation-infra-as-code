@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+  
+        body {
+          font-family: 'Droid Serif';
+        }
+        h1, h2, h3 {
+          font-family: 'Yanone Kaffeesatz';
+          font-weight: 400;
+          margin-bottom: 0;
+          color: green;
+        }
+
+        slide-frontpage {
+          font-family: 'Yanone Kaffeesatz';
+          font-weight: 400;
+          margin-bottom: 0;
+          color: green;
+          text-shadow: 2px 4px black;
+        }
+
+        /* #slide-how .slides {
+          font-size: 0.9em;
+          position: absolute;
+          top:  151px;
+          right: 140px;
+        }
+        #slide-how .slides h3 {
+          margin-top: 0.2em;
+        }
+        #slide-how .slides .first, #slide-how .slides .second {
+          padding: 1px 20px;
+          height: 90px;
+          width: 120px;
+          -moz-box-shadow: 0 0 10px #777;
+          -webkit-box-shadow: 0 0 10px #777;
+          box-shadow: 0 0 10px #777;
+        }
+        #slide-how .slides .first {
+          background: #fff;
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          z-index: 1;
+        }
+        #slide-how .slides .second {
+          position: relative;
+          background: #fff;
+          z-index: 0;
+        } */
+  
+
+        /* Two-column layout */
+        .left-column {
+          color: grey;
+          width: 20%;
+          height: 92%;
+          float: left;
+        }
+          .left-column h2:last-of-type, .left-column h3:last-child {
+            color: green;
+          }
+        .right-column {
+          width: 75%;
+          float: right;
+          padding-top: 1em;
+        }
+
+
+
+        div.my-header {
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f1ffee),color-stop(100%,green));
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 30px;
+            width: 100%;
+            text-align: left;
+        }
+
+        div.my-footer {
+            border-top: 1px solid green;
+            font-size: 10pt;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            height: 30px;
+            width: 100%;
+        }
+
+        div.my-header img {
+            height: 10%;
+            top: 30px;
+            right: 0px;
+            position: fixed;
+        }
+
+        div.my-footer p {
+            margin-top: 10px;
+            height: 30px;
+        }
+
+        div.my-footer img {
+            height: 20%;
+            bottom: 0px;
+            left: 0px;
+            position: fixed;
+        }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+background-image: url(img/arolla-backgroud.jpg)
+---
+layout: true
+name: with-logo
+<div class="my-header"><img src="img/logo-arolla.png" /></div>
+<div class="my-footer"><img src="img/dd-man.png" /><p>&copy; 2023 Arolla</p></div>
+
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Avant de commencer, petit sondage!
+---
+template: with-logo
+
+# Sondage
+
+## Qui a déjà entendu parler d'Infra As Code ?
+--
+
+## Qui utilise Docker ?
+--
+
+## Qui utilise Ansible ?
+--
+
+## Qui utilise Terraform ?
+
+
+---
+template: with-logo
+
+# Problématiques
+
+## 
+
+---
+
+layout: true
+template: with-logo
+
+# Problématique
+
+---
+
+## Sub section 1
+
+--
+
+## Sub section 2
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
