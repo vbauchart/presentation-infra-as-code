@@ -9,22 +9,40 @@
         @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
   
         body {
-          font-family: 'Droid Serif';
-        }
-        h1, h2, h3 {
-          font-family: 'Yanone Kaffeesatz';
-          font-weight: 400;
-          margin-bottom: 0;
-          color: green;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
 
-        slide-frontpage {
+        .remark-slide-content h1 {
+          font-weight: 300;
+          color: darkgreen;
+          padding-bottom: 10px;
+          border-bottom: 1px solid green;
+          font-variant: small-caps;
+        }
+
+        .remark-slide-content h2 {
+          font-weight: 300;
+          color: darkgreen;
+          font-size: 35px;
+        }
+
+        .remark-slide-content h3 {
+          margin-left: 5%;
+          font-size: 30px;
+          font-weight: 300;
+          color: darkgreen;
+          display: list-item;
+          margin-bottom: 0;
+          margin-top: 5px;
+        }
+        
+        /* slide-frontpage {
           font-family: 'Yanone Kaffeesatz';
           font-weight: 400;
           margin-bottom: 0;
           color: green;
           text-shadow: 2px 4px black;
-        }
+        } */
 
         /* #slide-how .slides {
           font-size: 0.9em;
@@ -87,12 +105,13 @@
 
         div.my-footer {
             border-top: 1px solid green;
+            color: green;
             font-size: 10pt;
             text-align: center;
             position: fixed;
             bottom: 0px;
             left: 0px;
-            height: 30px;
+            height: 40px;
             width: 100%;
         }
 
@@ -130,7 +149,7 @@ layout: false
 class: center, middle
 template: with-logo
 
-# Avant de commencer, petit sondage!
+# Petit sondage
 ---
 template: with-logo
 
@@ -147,28 +166,211 @@ template: with-logo
 
 ## Qui utilise Terraform ?
 
-
+[//]: #######################################################################
+[//]: #######################################################################
 ---
+layout: false
+class: center, middle
+template: with-logo
+
+
+# Problématiques par l'exemple
+
+[//]: #######################################################################
+---
+layout: true
 template: with-logo
 
 # Problématiques
 
-## 
-
+[//]: #######################################################################
 ---
 
+## Il faut mettre à jour la configuration SSH sur les 2000 serveurs
+
+### Je me connecte à tous les serveurs un par un 🤦
+--
+
+### J'utilise un script Bash qui appelle un sed en SSH dans une boucle `for` 🤨
+
+[//]: #######################################################################
+---
+## Les équipes de tests me demandent de créer un environnement identique à la production pour tester de bout en bout
+
+### Je fais une demande des 16 serveurs nécessaires et je configure tout à la main 😰
+
+
+
+[//]: #######################################################################
+---
+## Mon site est victime de son succès, il faut rajouter 4 serveurs
+
+### Je fais une demande pour 4 nouvelles VMs
+### J'installe et configure les 4 VMs
+### Je déclare les nouvelles machines dans le load-balancer
+### Je déclare les nouvelles machines dans l'application de monitoring 😖
+
+
+
+
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Premières pistes
+
+
+[//]: #######################################################################
+---
 layout: true
 template: with-logo
 
-# Problématique
+# Premières pistes
+
+[//]: #######################################################################
+---
+## Ne plus faire à la main les tâches répétitives
+
+## Ne pas dépendre d'autres équipes
+
+## Améliorer la confiance
+
+## Augmenter la vitesse
+
+[//]: #######################################################################
+---
+
+## La solution tiens en 3 mots :
+--
+
+### Automatiser
+--
+
+### Automatiser
+--
+
+### Automatiser
+--
+
+.right[![You got it](img/yougotit.gif)]
+
+
+
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Types d'automatisation
+
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Types d'automatisation
+
+---
+## 1. Les gestionnaires de configuration
+
+## 2. Les provisionneurs
+
+## 3. Les orchestrateurs
+
+
+
+
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Les gestionnaires de configuration
+---
+
+## S'execute sur une machine en fonctionnement
+
+### Installe des packages
+
+### Créer des users/groups/répertoires
+
+### Créer des fichiers de configuration
+
+### Lance des commandes de configuration
+
+### ...
+
+
+[//]: #######################################################################
 
 ---
 
-## Sub section 1
+## Exemple installation de SSH sur Debian :
+
+### Installe le paquet `apt install openssh-server`
+
+### Génère les clefs du serveur par `ssh-keygen -A`
+
+### Créer le fichier `/etc/ssh/sshd_config`
+
+### S'assurer que le service va démarrer au boot
+
+--
+## 🚀 Un script shell semble pouvoir faire l'affaire !!🚀
+
+
+[//]: #######################################################################
+---
+
+## Un script shell par produit
+
+### problème résolu 😎
 
 --
 
-## Sub section 2
+.right[![Objection](img/objection.gif)]
+
+
+[//]: #######################################################################
+---
+
+## Problèmes à gérer:
+
+### Comment gérer un parc hétérogène (Debian, Redhat, ...) ?
+
+### Comment gérer l'installation **et/ou** la mise à jour ?
+
+### Comment savoir quels logiciels installer selon le role de la machine ?
+
+### Comment modifier la configuration selon le role du serveur de la machine ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[//]: #######################################################################
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
