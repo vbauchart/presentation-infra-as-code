@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Title</title>
-    <meta charset="utf-8">
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+<head>
+  <title>Présentation Infra As Code</title>
+  <meta charset="utf-8">
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
   
-        body {
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
+    body {
+      font-family: 'Open Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
 
-        .remark-slide-content h1 {
-          font-weight: 300;
-          color: darkgreen;
-          padding-bottom: 10px;
-          border-bottom: 1px solid green;
-          font-variant: small-caps;
-        }
+    .remark-slide-content h1 {
+      font-weight: 300;
+      font-size: 40px;
+      color: darkgreen;
+      padding-bottom: 10px;
+      border-bottom: 1px solid green;
+      font-variant: small-caps;
+    }
 
-        .remark-slide-content h2 {
-          font-weight: 300;
-          color: darkgreen;
-          font-size: 35px;
-        }
+    .remark-slide-content h2 {
+      font-weight: 300;
+      font-weight: 600;
+      font-size: 25px;
+      color: darkgreen;
+      margin-bottom: 5px;
+      margin-top: 20px;
+    }
 
-        .remark-slide-content h3 {
-          margin-left: 5%;
-          font-size: 30px;
-          font-weight: 300;
-          color: darkgreen;
-          display: list-item;
-          margin-bottom: 0;
-          margin-top: 5px;
-        }
-        
-        /* slide-frontpage {
+    .remark-slide-content h3 {
+      margin-left: 10%;
+      font-weight: 300;
+      font-size: 20px;
+      color: darkgreen;
+      display: list-item;
+      margin-bottom: 2px;
+      margin-top: 2px;
+    }
+
+    /* slide-frontpage {
           font-family: 'Yanone Kaffeesatz';
           font-weight: 400;
           margin-bottom: 0;
@@ -44,7 +49,7 @@
           text-shadow: 2px 4px black;
         } */
 
-        /* #slide-how .slides {
+    /* #slide-how .slides {
           font-size: 0.9em;
           position: absolute;
           top:  151px;
@@ -73,70 +78,72 @@
           background: #fff;
           z-index: 0;
         } */
-  
-
-        /* Two-column layout */
-        .left-column {
-          color: grey;
-          width: 20%;
-          height: 92%;
-          float: left;
-        }
-          .left-column h2:last-of-type, .left-column h3:last-child {
-            color: green;
-          }
-        .right-column {
-          width: 75%;
-          float: right;
-          padding-top: 1em;
-        }
 
 
+    /* Two-column layout */
+    .left-column {
+      color: grey;
+      width: 20%;
+      height: 92%;
+      float: left;
+    }
 
-        div.my-header {
-            background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f1ffee),color-stop(100%,green));
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            height: 30px;
-            width: 100%;
-            text-align: left;
-        }
+    .left-column h2:last-of-type,
+    .left-column h3:last-child {
+      color: green;
+    }
 
-        div.my-footer {
-            border-top: 1px solid green;
-            color: green;
-            font-size: 10pt;
-            text-align: center;
-            position: fixed;
-            bottom: 0px;
-            left: 0px;
-            height: 40px;
-            width: 100%;
-        }
+    .right-column {
+      width: 75%;
+      float: right;
+      padding-top: 1em;
+    }
 
-        div.my-header img {
-            height: 10%;
-            top: 30px;
-            right: 0px;
-            position: fixed;
-        }
 
-        div.my-footer p {
-            margin-top: 10px;
-            height: 30px;
-        }
 
-        div.my-footer img {
-            height: 20%;
-            bottom: 0px;
-            left: 0px;
-            position: fixed;
-        }
-    </style>
+    div.my-header {
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #f1ffee), color-stop(100%, green));
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      height: 30px;
+      width: 100%;
+      text-align: left;
+    }
+
+    div.my-footer {
+      border-top: 1px solid green;
+      color: green;
+      font-size: 10pt;
+      text-align: center;
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+      height: 40px;
+      width: 100%;
+    }
+
+    div.my-header img {
+      height: 10%;
+      top: 30px;
+      right: 0px;
+      position: fixed;
+    }
+
+    div.my-footer p {
+      margin-top: 10px;
+      height: 30px;
+    }
+
+    div.my-footer img {
+      height: 20%;
+      bottom: 0px;
+      left: 0px;
+      position: fixed;
+    }
+  </style>
   </head>
-  <body>
-    <textarea id="source">
+
 background-image: url(img/arolla-backgroud.jpg)
 ---
 layout: true
