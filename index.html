@@ -144,6 +144,8 @@
   </style>
   </head>
 
+<body>
+  <textarea id="source">
 background-image: url(img/arolla-backgroud.jpg)
 ---
 layout: true
@@ -165,13 +167,15 @@ template: with-logo
 ## Qui a déjà entendu parler d'Infra As Code ?
 --
 
-## Qui utilise Docker ?
---
+### Git
 
-## Qui utilise Ansible ?
---
+### Docker
 
-## Qui utilise Terraform ?
+### Ansible
+
+### Puppet
+
+### Terraform
 
 [//]: #######################################################################
 [//]: #######################################################################
@@ -210,17 +214,28 @@ template: with-logo
 
 [//]: #######################################################################
 ---
-## Mon site est victime de son succès, il faut rajouter 4 serveurs
+## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
 
-### Je fais une demande pour 4 nouvelles VMs
-### J'installe et configure les 4 VMs
-### Je déclare les nouvelles machines dans le load-balancer
-### Je déclare les nouvelles machines dans l'application de monitoring 😖
+### Je fais une demande pour 8 nouvelles VMs 🕑
 
 
+### J'installe et configure les 8 VMs 😮‍💨
 
 
-[//]: #######################################################################
+### Je déclare les nouvelles machines dans le load-balance
+
+--
+### Je ne trouve pas la documentation
+
+--
+### Une fois terminé le site renvoie une erreur une fois sur 10 😰
+
+--
+### C'est la panique, je passe la nuit à trouver la virgule en trop qui fait tout planter 🙃
+
+--
+### C'est toujours la panique, car j'ai oublier de monitorer les 8 nouvelles machines et une des VM a un problème
+
 [//]: #######################################################################
 ---
 layout: false
@@ -274,8 +289,56 @@ layout: false
 class: center, middle
 template: with-logo
 
-# Types d'automatisation
+# Automatisation ?
 
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Automatiser proprement
+
+[//]: #######################################################################
+---
+## 🤖 Utiliser un langage de programmation
+
+### Choisir le langage adapté
+
+### Choisir le bon outil
+
+## 🚩 Versionner
+
+### Ajouter des point de sauvegarde
+
+### Expérimenter
+
+## 🎠Tester
+
+### Reproduire ce qu'il va se passer
+
+### Vérifier les situations spécifiques
+
+[//]: #######################################################################
+---
+## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
+
+### Validation sur l'environnement de test
+```sh
+$ git checkout develop
+$ git checkout -b upgrade-servers
+$ vim application/web/servers.yml
+$ git commit -am'upgrade to 10 servers'
+$ git push
+```
+
+--
+### Mise en production
+
+```sh
+$ git checkout master
+$ git merge upgrade-servers
+$ git push
+```
 
 [//]: #######################################################################
 ---
@@ -381,10 +444,11 @@ template: with-logo
 [//]: #######################################################################
 
     </textarea>
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
-    </script>
-    <script>
-      var slideshow = remark.create();
-    </script>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+  </script>
+  <script>
+    var slideshow = remark.create();
+  </script>
   </body>
+
 </html>
