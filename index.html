@@ -34,7 +34,7 @@
     .remark-slide-content h3 {
       margin-left: 10%;
       font-weight: 300;
-      font-size: 20px;
+      font-size: 25px;
       color: darkgreen;
       display: list-item;
       margin-bottom: 2px;
@@ -99,6 +99,26 @@
       padding-top: 1em;
     }
 
+
+    blockquote::before {
+      content: open-quote;
+      margin-right: 5px;
+      font-size: 1.2em;
+    }
+
+    blockquote {
+      border-left: 0.3em solid #ccc;
+      padding: 0 15px;
+      font-style: italic;
+      color: #ccc;
+      quotes: "\201C""\201D""\2018""\2019";
+    }
+
+    blockquote::after {
+      content: close-quote;
+      margin-left: 5px;
+      font-size: 1.2em;
+    }
 
 
     div.my-header {
@@ -296,7 +316,7 @@ template: with-logo
 layout: true
 template: with-logo
 
-# Automatiser proprement
+# "`Infra As Code`"
 
 [//]: #######################################################################
 ---
@@ -324,35 +344,50 @@ template: with-logo
 
 ### Validation sur l'environnement de test
 ```sh
-$ git checkout develop
-$ git checkout -b upgrade-servers
-$ vim application/web/servers.yml
-$ git commit -am'upgrade to 10 servers'
-$ git push
+$ git checkout develop                   # branche principale de dev
+$ git checkout -b upgrade-servers        # créer branche de test
+$ vim application/web/servers.yml        # modifie la config
+$ git commit -am'upgrade to 10 servers'  # ajoute message pertinent
+$ git push                               # la CI/CD prend le relais
 ```
 
 --
 ### Mise en production
 
 ```sh
-$ git checkout master
-$ git merge upgrade-servers
-$ git push
+$ git checkout master                    # branche de release
+$ git merge upgrade-servers              # merge ce qui a été testé
+$ git push                               # la CI/CD prend le relais
 ```
+
 
 [//]: #######################################################################
 ---
 layout: true
 template: with-logo
 
-# Types d'automatisation
+# Types d'outils IaC
 
 ---
 ## 1. Les gestionnaires de configuration
 
+### Puppet
+
+### Ansible
+
+### Docker
+
 ## 2. Les provisionneurs
 
+### Terraform
+
+### (Ansible)
+
 ## 3. Les orchestrateurs
+
+### Kubernetes
+
+### (Ansible)
 
 
 
@@ -391,7 +426,7 @@ template: with-logo
 
 ### Créer le fichier `/etc/ssh/sshd_config`
 
-### S'assurer que le service va démarrer au boot
+### Redémarrer le démon ssh
 
 --
 ## 🚀 Un script shell semble pouvoir faire l'affaire !!🚀
@@ -404,6 +439,19 @@ template: with-logo
 
 ### problème résolu 😎
 
+```script
+#!/bin/bash -xe
+
+apt install openssh-server`
+
+ssh-keygen -A
+
+# Security enforcement
+sed 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config
+sed 's/^PermitRootLogin no/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
+
+systemctl restart sshd
+```
 --
 
 .right[![Objection](img/objection.gif)]
