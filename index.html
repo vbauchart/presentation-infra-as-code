@@ -16,7 +16,7 @@
     .remark-slide-content h1 {
       font-weight: 300;
       font-size: 40px;
-      color: darkgreen;
+      color: rgb(103, 103, 103);
       padding-bottom: 10px;
       border-bottom: 1px solid green;
       font-variant: small-caps;
@@ -26,7 +26,7 @@
       font-weight: 300;
       font-weight: 600;
       font-size: 25px;
-      color: darkgreen;
+      color: rgb(0, 124, 0);
       margin-bottom: 5px;
       margin-top: 20px;
     }
@@ -79,6 +79,13 @@
           z-index: 0;
         } */
 
+    
+    .image-flash img {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+    }
 
     /* Two-column layout */
     .left-column {
@@ -100,25 +107,24 @@
     }
 
 
-    blockquote::before {
+    /* blockquote::before {
       content: open-quote;
       margin-right: 5px;
       font-size: 1.2em;
-    }
+    } */
 
     blockquote {
       border-left: 0.3em solid #ccc;
       padding: 0 15px;
       font-style: italic;
-      color: #ccc;
-      quotes: "\201C""\201D""\2018""\2019";
+      color: #7d7d7d;
     }
 
-    blockquote::after {
+    /* blockquote::after {
       content: close-quote;
       margin-left: 5px;
       font-size: 1.2em;
-    }
+    } */
 
 
     div.my-header {
@@ -363,34 +369,37 @@ $ git push                               # la CI/CD prend le relais
 
 [//]: #######################################################################
 ---
-layout: true
-template: with-logo
+## Dans cette présentation, nous allons voir les outils suivants :
 
-# Types d'outils IaC
-
----
 ## 1. Les gestionnaires de configuration
 
 ### Puppet
 
 ### Ansible
 
-### Docker
+### *Docker*
 
 ## 2. Les provisionneurs
 
 ### Terraform
 
-### (Ansible)
+### *Ansible*
 
 ## 3. Les orchestrateurs
 
 ### Kubernetes
 
-### (Ansible)
+### *Ansible*
 
 
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
 
+# Les gestionnaires de configuration
 
 
 [//]: #######################################################################
@@ -424,12 +433,14 @@ template: with-logo
 
 ### Génère les clefs du serveur par `ssh-keygen -A`
 
-### Créer le fichier `/etc/ssh/sshd_config`
+### Adapter le fichier `/etc/ssh/sshd_config` à nos besoins
+
+### Ajouter un utilisateur
 
 ### Redémarrer le démon ssh
 
 --
-## 🚀 Un script shell semble pouvoir faire l'affaire !!🚀
+## 👉 Un script shell semble pouvoir faire l'affaire !! 👈
 
 
 [//]: #######################################################################
@@ -442,19 +453,21 @@ template: with-logo
 ```script
 #!/bin/bash -xe
 
-apt install openssh-server`
+apt install -y openssh-server
 
 ssh-keygen -A
 
-# Security enforcement
 sed 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config
 sed 's/^PermitRootLogin no/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
 
+useradd -m user1
+
 systemctl restart sshd
 ```
---
 
-.right[![Objection](img/objection.gif)]
+--
+.image-flash[![Objection](img/objection.gif)]
+
 
 
 [//]: #######################################################################
@@ -466,9 +479,229 @@ systemctl restart sshd
 
 ### Comment gérer l'installation **et/ou** la mise à jour ?
 
+### Que se passe-t-il si le serveur n'est pas dans l'état prévu ?
+
 ### Comment savoir quels logiciels installer selon le role de la machine ?
 
-### Comment modifier la configuration selon le role du serveur de la machine ?
+### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres differents ?
+
+
+
+[//]: #######################################################################
+---
+
+## *Petite pause vocabulaire !*
+
+## Idempotence en mathématique
+
+### une fonction a le résultat qu'on l'applique une ou plusieurs fois
+
+### Par exemple :
+
+```math
+abs(abs(x)) = abs(x)
+abs(abs(-5)) = abs(-5) = 5
+```
+
+[//]: #######################################################################
+---
+
+## Idempotence pour de la configuration :
+
+### Une opération a le même effet qu'on l'applique une ou plusieurs fois
+
+--
+
+## Sur l'exemple précedent du script Bash :
+
+```bash
+# Indempotent
+apt install -y openssh-server
+```
+
+--
+```bash
+# PAS indempotent
+useradd -m user1
+```
+
+--
+```bash
+# Indempotent (si le fichier n'a pas été modifé par ailleurs)
+sed 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config
+```
+
+[//]: #######################################################################
+---
+
+## Pourquoi la notion d'_idempotence_ stricte est importante pour un gestionnaire de configuration ?
+
+### On veut gérer la mise à jour d'un parc de serveurs quelque soit leur état initial
+
+### On veut gérer le cas d'une mise à jour arrêtée brusquement
+
+### La mise à jour ne doit pas être sensible à une intervention manuelle
+
+### On veut vérifier tous les attributs d'un élément, pas seulement son existence
+
+
+[//]: #######################################################################
+---
+
+## Problèmes à gérer:
+
+### Comment gérer un parc hétérogène (Debian, Redhat, ...) ?
+
+### ~~Comment gérer l'installation **et/ou** la mise à jour~~
+
+### ~~Que se passe-t-il si le serveur n'est pas dans l'état prévu ?~~
+
+### **Comment assurer l’idempotence**
+
+### Comment savoir quels logiciels installer selon le role de la machine ?
+
+### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres differents ?
+
+
+[//]: #######################################################################
+---
+
+## Les principaux gestionnaires de configuration traditionnels :
+
+### **Ansible**
+
+### **Puppet**
+
+### Chef
+
+### Salt
+
+### 👉 https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software
+
+## Un gestionnaire de configuration un peu spécial :
+
+### Docker
+
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Ansible
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Ansible
+
+[//]: #######################################################################
+---
+
+## Mode d'installation du client (`Control Node`)
+
+### Le framework Ansible
+
+### La clef privée SSH
+
+### Les fichiers de description dans GIT
+
+## Mode d'installation des serveurs supervisés (`Managed Nodes`)
+
+### Python (dans une version [suffisamment récente](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#node-requirement-summary))
+
+### Un utilisateur possédant la clef publique SSH
+
+### Cet utilisateur doit avoir suffisamment de droit sur le système (ex: `sudo`)
+
+> On notera le peu de prérequis nécessaires, en particulier sur les serveurs supervisés
+
+[//]: #######################################################################
+---
+
+## Mode de fonctionnement
+
+### On décrit les groupes de **`nodes`** et leurs paramétrages dans un **`inventory`**
+
+### On execute un **`playbook`** sur un un groupe de serveurs de l'**`inventory`**
+
+### Un **`playbook`** est un fichier YAML constitué d'une liste de **`tasks`**
+
+### Une **`task`** appel un **`module`** avec des paramètres
+
+### Un **`module`** est un morceau de code (généralement Python) permettant de gérer un élément du **`nodes`** de façon idempotente
+
+### Il est possible de regrouper des **`tasks`** dans un **`role`**
+
+[//]: #######################################################################
+---
+
+## Résumé
+
+.center[<div class="mermaid">
+  flowchart TB
+
+  subgraph nodes
+  Inventory --> Group1
+  Inventory --> Group2
+  Group1 --> Node1
+  Group1 --> Node2
+  Group2 --> Node2
+  Group2 --> Node3
+  end
+
+  subgraph tasks
+  Playbook --> tasks1
+  Playbook --> tasks2
+  Playbook --> role1
+  Playbook --> role2
+  role1    --> task4
+  role1    --> task5
+  role2    --> task7
+  role2    --> task8
+  end
+
+  Playbook -.-> Group1
+</div>]
+
+[//]: #######################################################################
+---
+
+## Exemples de **`tasks`**
+
+### Module `package`
+```YAML
+- name: Install a list of packages
+  ansible.builtin.package:
+    pkg:
+    - foo
+    - foo-tools
+```
+
+### Module `user`
+
+```YAML
+- name: Add the user 'johnd' with an uid and a primary group of 'admin'
+  ansible.builtin.user:
+    name: johnd
+    comment: John Doe
+    uid: 1040
+    group: admin
+```
+
+[//]: #######################################################################
+---
+
+## Exemples de **`tasks`**
+
+
+
+
+
+
 
 
 
@@ -495,8 +728,31 @@ systemctl restart sshd
   <script src="https://remarkjs.com/downloads/remark-latest.min.js">
   </script>
   <script>
-    var slideshow = remark.create();
+    var slideshow = remark.create({
+  highlightLanguage: 'javascript',
+  highlightStyle: 'monokai',
+  highlightLines: true,
+  highlightSpans: true
+    });
   </script>
-  </body>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    // mermaid.initialize({ startOnLoad: true });
+    mermaid.initialize({
+      startOnLoad: false,
+      cloneCssStyles: false
+    });
+    function initMermaid(s) {
+      var diagrams = document.querySelectorAll('.mermaid');
+      var i;
+      for(i=0;i<diagrams.length;i++){
+        if(diagrams[i].offsetWidth>0){
+          mermaid.init(undefined, diagrams[i]);
+        }
+      }
+    }
+    slideshow.on('afterShowSlide', initMermaid);
+    initMermaid(slideshow.getSlides()[slideshow.getCurrentSlideIndex()]);
+  </script>
 
 </html>
