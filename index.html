@@ -16,7 +16,7 @@
     .remark-slide-content h1 {
       font-weight: 300;
       font-size: 40px;
-      color: rgb(103, 103, 103);
+      color: #888686;
       padding-bottom: 10px;
       border-bottom: 1px solid green;
       font-variant: small-caps;
@@ -26,7 +26,7 @@
       font-weight: 300;
       font-weight: 600;
       font-size: 25px;
-      color: rgb(0, 124, 0);
+      color: #0FA538;
       margin-bottom: 5px;
       margin-top: 20px;
     }
@@ -35,49 +35,11 @@
       margin-left: 10%;
       font-weight: 300;
       font-size: 25px;
-      color: darkgreen;
+      color: #1A6E03;
       display: list-item;
       margin-bottom: 2px;
       margin-top: 2px;
     }
-
-    /* slide-frontpage {
-          font-family: 'Yanone Kaffeesatz';
-          font-weight: 400;
-          margin-bottom: 0;
-          color: green;
-          text-shadow: 2px 4px black;
-        } */
-
-    /* #slide-how .slides {
-          font-size: 0.9em;
-          position: absolute;
-          top:  151px;
-          right: 140px;
-        }
-        #slide-how .slides h3 {
-          margin-top: 0.2em;
-        }
-        #slide-how .slides .first, #slide-how .slides .second {
-          padding: 1px 20px;
-          height: 90px;
-          width: 120px;
-          -moz-box-shadow: 0 0 10px #777;
-          -webkit-box-shadow: 0 0 10px #777;
-          box-shadow: 0 0 10px #777;
-        }
-        #slide-how .slides .first {
-          background: #fff;
-          position: absolute;
-          top: 20%;
-          left: 20%;
-          z-index: 1;
-        }
-        #slide-how .slides .second {
-          position: relative;
-          background: #fff;
-          z-index: 0;
-        } */
 
     
     .image-flash img {
@@ -87,32 +49,6 @@
       transform:translate(-50%,-50%);
     }
 
-    /* Two-column layout */
-    .left-column {
-      color: grey;
-      width: 20%;
-      height: 92%;
-      float: left;
-    }
-
-    .left-column h2:last-of-type,
-    .left-column h3:last-child {
-      color: green;
-    }
-
-    .right-column {
-      width: 75%;
-      float: right;
-      padding-top: 1em;
-    }
-
-
-    /* blockquote::before {
-      content: open-quote;
-      margin-right: 5px;
-      font-size: 1.2em;
-    } */
-
     blockquote {
       border-left: 0.3em solid #ccc;
       padding: 0 15px;
@@ -120,15 +56,8 @@
       color: #7d7d7d;
     }
 
-    /* blockquote::after {
-      content: close-quote;
-      margin-left: 5px;
-      font-size: 1.2em;
-    } */
-
-
     div.my-header {
-      background: -webkit-gradient(linear, left top, right top, color-stop(0%, #f1ffee), color-stop(100%, green));
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(20%, #C0E3B2), color-stop(100%, green));
       position: fixed;
       top: 0px;
       left: 0px;
@@ -177,10 +106,10 @@
   <script>
     var slideshow = remark.create({
       sourceUrl: 'infra-as-code.md',
-  highlightLanguage: 'javascript',
-  highlightStyle: 'monokai',
-  highlightLines: true,
-  highlightSpans: true
+      highlightLanguage: 'javascript',
+      highlightStyle: 'monokai',
+      highlightLines: true,
+      highlightSpans: true
     });
   </script>
   <script type="module">
