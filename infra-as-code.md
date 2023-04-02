@@ -255,15 +255,13 @@ template: with-logo
 
 ## Exemple installation de SSH sur Debian :
 
-### Installe le paquet `apt install openssh-server`
+### Installe le paquet `apt install nginx`
 
-### Génère les clefs du serveur par `ssh-keygen -A`
+### Adapter le fichier `/etc/nginx/conf.d/default.conf` à nos besoins
 
-### Adapter le fichier `/etc/ssh/sshd_config` à nos besoins
+### Ajouter un utilisateur `app01`
 
-### Ajouter un utilisateur
-
-### Redémarrer le démon ssh
+### Redémarrer le service `nginx`
 
 --
 ## 👉 Un script shell semble pouvoir faire l'affaire !! 👈
@@ -279,16 +277,13 @@ template: with-logo
 ```script
 #!/bin/bash -xe
 
-apt install -y openssh-server
+apt install -y nginx
 
-ssh-keygen -A
+sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
-sed 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config
-sed 's/^PermitRootLogin no/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
+useradd -m app01
 
-useradd -m user1
-
-systemctl restart sshd
+systemctl restart nginx
 ```
 
 --
@@ -342,19 +337,19 @@ abs(abs(-5)) = abs(-5) = 5
 
 ```bash
 # Indempotent
-apt install -y openssh-server
+apt install -y nginx
 ```
 
 --
 ```bash
 # PAS indempotent
-useradd -m user1
+useradd -m app01
 ```
 
 --
 ```bash
 # Indempotent (si le fichier n'a pas été modifé par ailleurs)
-sed 's/^PermitEmptyPasswords yes/PermitEmptyPasswords no/' /etc/ssh/sshd_config
+sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 ```
 
 [//]: #######################################################################
@@ -427,13 +422,13 @@ template: with-logo
 [//]: #######################################################################
 ---
 
-## Mode d'installation du client (`Control Node`)
+## Mode d'installation du contrôleur (`Control Node`)
 
 ### Le framework Ansible
 
 ### La clef privée SSH
 
-### Les fichiers de description dans GIT
+### Les fichiers de description clonés depuis GIT
 
 ## Mode d'installation des serveurs supervisés (`Managed Nodes`)
 
@@ -516,12 +511,6 @@ template: with-logo
 [//]: #######################################################################
 ---
 
-## Exemples de **`playbook`**
-
-
-[//]: #######################################################################
----
-
 ## Templates
 
 ### Le module `template`
@@ -533,7 +522,7 @@ template: with-logo
     dest: '/etc/file.conf'
 ```
 
-### Des fichiers `Jinja` dans le répertoire `templates`
+### Des fichiers `jinja` dans le répertoire `templates`
 
 ```Django
 Hello {{ name }}!
@@ -545,6 +534,76 @@ I'm sorry to inform you that you did not do so well on today's {{ test_name }}.
 {% endif %}
 You reached {{ score }} out of {{ max_score }} points.
 ```
+
+[//]: #######################################################################
+---
+
+## Avantages
+
+### Mise en place extrêmement rapide (pas d'agent, pas de serveur)
+
+### Langage de description YAML très simple
+
+### Facilité d'ajout de ses propres modules Python (attention à l'idempotence !)
+
+## Inconvénients
+
+### YAML montre ses limites en cas de scénarios complexes
+
+### Aucune sécurité par défaut
+
+### Pas de serveur central par défaut
+
+### Attention au passage à l'échelle
+
+???
+- C'est possible que la clef SSH privée soit distribuée à tout le monde, donnant accès à toutes les machines en root !!
+- Tentation d'utiliser le module `shell` qui casse tout l'interêt de Ansible
+- Il est cependant possible de faire propre avec Ansible avec des règles strictes
+
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# DEMO
+
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Puppet
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Puppet
+
+[//]: #######################################################################
+---
+
+## Mode d'installation du contrôleur (`puppet master`)
+
+### Le service Puppet Master
+
+### Les fichiers de description clonés depuis GIT
+
+## Mode d'installation des serveurs supervisés (`puppet agent`)
+
+### Un agent Puppet enregisté auprès d'un `puppet master`
+
+> L'installation d'une infrastructure Puppet peut être **complexe**.
+
+> L'installation d'un serveur supervisé nécessite que l'agent Puppet soit **déjà** installé. Puppet doit donc être inclus à l'installation par un autre moyen.
+
+
+
+
 
 
 
