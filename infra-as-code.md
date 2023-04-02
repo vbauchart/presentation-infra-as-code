@@ -448,7 +448,7 @@ template: with-logo
 [//]: #######################################################################
 ---
 
-## Mode de fonctionnement
+## Vocabulaire
 
 ### On décrit les groupes de **`nodes`** et leurs paramétrages dans un **`inventory`**
 
@@ -458,9 +458,11 @@ template: with-logo
 
 ### Une **`task`** appel un **`module`** avec des paramètres
 
-### Un **`module`** est un morceau de code (généralement Python) permettant de gérer un élément du **`nodes`** de façon idempotente
+### Un **`module`** est un morceau de code (généralement Python) qui s'execute sur le **`node`**
 
 ### Il est possible de regrouper des **`tasks`** dans un **`role`**
+
+## 
 
 [//]: #######################################################################
 ---
@@ -496,39 +498,53 @@ template: with-logo
 [//]: #######################################################################
 ---
 
-## Exemples de **`tasks`**
+## Pour chaque `playbook`
 
-### Module `package`
-```YAML
-- name: 'Install a list of packages'
-  ansible.builtin.package:
-    pkg:
-    - 'foo'
-    - 'foo-tools'
-```
+### Le `playbook` est exécuté localement sur le contrôleur
 
-### Module `user`
+### Chaque `playbook` vise un groupe de `nodes` 
 
-```YAML
-- name: "Add the user 'johnd' with an uid and a primary group of 'admin'"
-  ansible.builtin.user:
-    name: 'johnd'
-    comment: 'John Doe'
-    uid: '1040'
-    group: 'admin'
-```
+### Chaque `task` est exécutée l'une après l'autre dans l'ordre
+
+## Pour chaque `task`
+
+### Le code du `module` est uploadé par SSH sur chaque `node` du groupe
+
+### Le `module` est executé avec ses paramètres et retourne le résultat à la `task`
+
 
 [//]: #######################################################################
 ---
 
-## Exemples de **`tasks`**
+## Exemples de **`playbook`**
 
 
+[//]: #######################################################################
+---
 
+## Templates
 
+### Le module `template`
 
+```YAML
+- name: 'Template a file to /etc/file.conf'
+  ansible.builtin.template:
+    src: '/mytemplates/foo.j2'
+    dest: '/etc/file.conf'
+```
 
+### Des fichiers `Jinja` dans le répertoire `templates`
 
+```Django
+Hello {{ name }}!
+
+{% if score > 80 %}
+I'm happy to inform you that you did very well on today's {{ test_name }}.
+{% else %}
+I'm sorry to inform you that you did not do so well on today's {{ test_name }}.
+{% endif %}
+You reached {{ score }} out of {{ max_score }} points.
+```
 
 
 
