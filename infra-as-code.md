@@ -593,11 +593,11 @@ template: with-logo
 
 ### Les fichiers de description clonés depuis GIT
 
+> L'installation d'une infrastructure Puppet peut être **complexe**.
+
 ## Mode d'installation des serveurs supervisés (`puppet agent`)
 
 ### Un agent Puppet enregisté auprès d'un `puppet master`
-
-> L'installation d'une infrastructure Puppet peut être **complexe**.
 
 > L'installation d'un serveur supervisé nécessite que l'agent Puppet soit **déjà** installé. Puppet doit donc être inclus à l'installation par un autre moyen.
 
