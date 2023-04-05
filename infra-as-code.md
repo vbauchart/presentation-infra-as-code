@@ -82,10 +82,10 @@ template: with-logo
 ### Je fais une demande pour 8 nouvelles VMs 🕑
 
 
-### J'installe et configure les 8 VMs 😮‍💨
+### J'installe et configure les 8 VMs 💀
 
 
-### Je déclare les nouvelles machines dans le load-balance
+### Je déclare les nouvelles machines dans le load-balancer 🤨
 
 --
 ### Je ne trouve pas la documentation
@@ -97,7 +97,7 @@ template: with-logo
 ### C'est la panique, je passe la nuit à trouver la virgule en trop qui fait tout planter 🙃
 
 --
-### C'est toujours la panique, car j'ai oublier de monitorer les 8 nouvelles machines et une des VM a un problème
+### C'est toujours la panique, car j'ai oublié de monitorer les 8 nouvelles machines et une des VM a un problème depuis des semaines
 
 [//]: #######################################################################
 ---
