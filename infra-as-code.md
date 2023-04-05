@@ -1,10 +1,17 @@
+
+
 background-image: url(img/arolla-backgroud.jpg)
+background-size: cover
+class: center, middle
+
+.bigtitle[Infra As Code]
+
+
 ---
 layout: true
 name: with-logo
 <div class="my-header"><img src="img/logo-arolla.png" /></div>
 <div class="my-footer"><img src="img/dd-man.png" /><p>&copy; 2023 Arolla</p></div>
-
 ---
 layout: false
 class: center, middle
@@ -16,17 +23,21 @@ template: with-logo
 
 # Sondage
 
-## Qui a déjà entendu parler d'Infra As Code ?
+## Qui maîtrise un de ces outils ?
 --
 
 ### Git
 
+--
 ### Docker
 
+--
 ### Ansible
 
+--
 ### Puppet
 
+--
 ### Terraform
 
 [//]: #######################################################################
@@ -505,7 +516,7 @@ template: with-logo
 
 ### Le code du `module` est uploadé par SSH sur chaque `node` du groupe
 
-### Le `module` est executé avec ses paramètres et retourne le résultat à la `task`
+### Le `module` est exécuté avec ses paramètres et retourne le résultat à la `task`
 
 
 [//]: #######################################################################
