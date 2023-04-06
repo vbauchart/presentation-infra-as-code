@@ -23,7 +23,7 @@ template: with-logo
 
 # Sondage
 
-## Qui maîtrise un de ces outils ?
+## Qui ici maîtrise :
 --
 
 ### Git
@@ -40,6 +40,34 @@ template: with-logo
 --
 ### Terraform
 
+--
+### Kubernetes
+
+
+[//]: #######################################################################
+[//]: #######################################################################
+
+---
+layout: false
+template: with-logo
+
+# Plan
+
+## 1. La problématique du déploiement d'infrastructure
+
+## 2. Les outils d'Infrastructure as Code
+
+## 3. Les Devs et les Ops sont dans un bateau
+
+# Objectifs
+
+## Comprendre les concepts communs de tous les outils
+
+## Comprendre les enjeux d'organisations et de responsabilité
+
+???
+
+
 [//]: #######################################################################
 [//]: #######################################################################
 ---
@@ -48,56 +76,60 @@ class: center, middle
 template: with-logo
 
 
-# Problématiques par l'exemple
+# Problématique par l'exemple
 
 [//]: #######################################################################
 ---
 layout: true
 template: with-logo
 
-# Problématiques
+# Problématique
 
 [//]: #######################################################################
 ---
 
-## Il faut mettre à jour la configuration SSH sur les 2000 serveurs
+## Il faut mettre à jour la configuration SSH sur les 2000 serveurs.
 
-### Je me connecte à tous les serveurs un par un 🤦
 --
+### Je me connecte à tous les serveurs un par un ? 🤦
 
-### J'utilise un script Bash qui appelle un sed en SSH dans une boucle `for` 🤨
-
-[//]: #######################################################################
----
-## Les équipes de tests me demandent de créer un environnement identique à la production pour tester de bout en bout
-
-### Je fais une demande des 16 serveurs nécessaires et je configure tout à la main 😰
-
-
+--
+### J'utilise un script Bash qui appelle un sed en SSH dans une boucle `for` ? 🤨
 
 [//]: #######################################################################
 ---
-## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
+## Les équipes de tests me demandent de créer un environnement identique à la production pour tester de bout en bout.
 
-### Je fais une demande pour 8 nouvelles VMs 🕑
+--
+### Je fais une demande des 16 serveurs nécessaires et je configure tout à la main ? 😰
 
+[//]: #######################################################################
+---
+## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs frontaux !
 
+--
+### Je fais une demande pour 8 nouvelles VMs. 👋
+
+--
+### J'attend la livraison des VMs par l'équipe système. 🕑
+
+--
 ### J'installe et configure les 8 VMs 💀
 
-
+--
 ### Je déclare les nouvelles machines dans le load-balancer 🤨
 
 --
-### Je ne trouve pas la documentation
+### Je ne trouve pas la documentation, je cherche le collègue qui a fait la première installation. 🏃
 
 --
 ### Une fois terminé le site renvoie une erreur une fois sur 10 😰
 
 --
-### C'est la panique, je passe la nuit à trouver la virgule en trop qui fait tout planter 🙃
+### C'est la panique, je passe la nuit à trouver la virgule en trop qui fait tout planter 😑
 
 --
-### C'est toujours la panique, car j'ai oublié de monitorer les 8 nouvelles machines et une des VM a un problème depuis des semaines
+### 3 mois après, c'est toujours la panique, car j'ai oublié de monitorer les 8 nouvelles machines et une des VM a un problème depuis des semaines et personne ne l'a remarqué 🙃
 
 [//]: #######################################################################
 ---
@@ -119,9 +151,13 @@ template: with-logo
 
 ## Ne pas dépendre d'autres équipes
 
-## Améliorer la confiance
+## Ne pas dépendre d'une documentation périmée
 
-## Augmenter la vitesse
+## ➡️ Anticiper les problèmes
+
+## ➡️ Améliorer la confiance
+
+## ➡️ Augmenter la vitesse
 
 [//]: #######################################################################
 ---
@@ -130,7 +166,7 @@ template: with-logo
 
 # La méthode ⚙️
 
-## La solution tiens en 3 étapes :
+## La solution tiens en 3 mots :
 --
 
 ### Automatiser
@@ -163,17 +199,17 @@ template: with-logo
 
 [//]: #######################################################################
 ---
-## 🤖 Utiliser un langage de programmation
+## 🤖 Utiliser un outil de développement
 
-### Choisir le langage adapté
+### Choisir le (ou les) bons frameworks adaptés à nos besoins
 
-### Choisir le bon outil
+### Connaître les limites de chaque outil
 
 ## 🚩 Versionner
 
 ### Ajouter des point de sauvegarde
 
-### Expérimenter
+### Expérimenter 
 
 ## 🎠Tester
 
@@ -185,24 +221,38 @@ template: with-logo
 ---
 ## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
 
-### Validation sur l'environnement de test
+--
+## "Dans le Meilleur des mondes"
+
+### Validation sur l'environnement de test :
 ```sh
 $ git checkout develop                   # branche principale de dev
 $ git checkout -b upgrade-servers        # créer branche de test
-$ vim application/web/servers.yml        # modifie la config
+*$ vim application/web/servers.yml        # modifie la config
 $ git commit -am'upgrade to 10 servers'  # ajoute message pertinent
 $ git push                               # la CI/CD prend le relais
 ```
 
---
-### Mise en production
+### Suivre le déploiement dans l'application de monitoring ☕
+
+### Tester
+
+### Recommencer
+
+---
+## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
+
+## "Dans le Meilleur des mondes"
+
+### Mise en production :
 
 ```sh
 $ git checkout master                    # branche de release
-$ git merge upgrade-servers              # merge ce qui a été testé
+$ git merge upgrade-servers              # merge la branche
 $ git push                               # la CI/CD prend le relais
 ```
 
+### Suivre le déploiement dans l'application de monitoring ☕
 
 [//]: #######################################################################
 ---
@@ -257,14 +307,14 @@ template: with-logo
 
 ### Lance des commandes de configuration
 
-### ...
+### Redémarre des services
 
 
 [//]: #######################################################################
 
 ---
 
-## Exemple installation de SSH sur Debian :
+## Exemple installation d'un site web sur Debian :
 
 ### Installe le paquet `apt install nginx`
 
@@ -283,10 +333,10 @@ template: with-logo
 
 ## Un script shell par produit
 
-### problème résolu 😎
+## Problème résolu 😎
 
-```script
-#!/bin/bash -xe
+```bash
+#!/bin/bash -e
 
 apt install -y nginx
 
@@ -315,7 +365,7 @@ systemctl restart nginx
 
 ### Comment savoir quels logiciels installer selon le role de la machine ?
 
-### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres differents ?
+### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres différents ?
 
 
 
@@ -328,11 +378,13 @@ systemctl restart nginx
 
 ### une fonction a le résultat qu'on l'applique une ou plusieurs fois
 
-### Par exemple :
+### Par exemple, la fonction `abs()` est idempotente :
 
 ```math
 abs(abs(x)) = abs(x)
+
 abs(abs(-5)) = abs(-5) = 5
+asb(abs(abs(-5))) = abs(abs(-5)) = abs(-5) = 5
 ```
 
 [//]: #######################################################################
@@ -343,9 +395,6 @@ abs(abs(-5)) = abs(-5) = 5
 ### Une opération a le même effet qu'on l'applique une ou plusieurs fois
 
 --
-
-## Sur l'exemple précedent du script Bash :
-
 ```bash
 # Indempotent
 apt install -y nginx
@@ -355,6 +404,12 @@ apt install -y nginx
 ```bash
 # PAS indempotent
 useradd -m app01
+```
+
+--
+```bash
+# PAS indempotent
+echo "listen 80" >> /etc/nginx/conf.d/default.conf
 ```
 
 --
@@ -384,11 +439,11 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
 ### Comment gérer un parc hétérogène (Debian, Redhat, ...) ?
 
-### ~~Comment gérer l'installation **et/ou** la mise à jour~~
+### .grey[~~Comment gérer l'installation **et/ou** la mise à jour~~]
 
-### ~~Que se passe-t-il si le serveur n'est pas dans l'état prévu ?~~
+### .grey[~~Que se passe-t-il si le serveur n'est pas dans l'état prévu ?~~]
 
-### **Comment assurer l’idempotence**
+### .red[Comment assurer l’idempotence de chaque déploiement]
 
 ### Comment savoir quels logiciels installer selon le role de la machine ?
 
@@ -398,17 +453,33 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 [//]: #######################################################################
 ---
 
-## Les principaux gestionnaires de configuration traditionnels :
+## Principales fonctionnalités attendues :
+
+### .red[Classifier] les serveurs : leur donner un ou plusieurs rôles
+
+### Créer des .red[ressources systèmes] de façon idempotente (fichiers, repertoires, user, groups, configuration réseau, etc...)
+
+### Créer des fichiers de configuration à partir de .red[templates] à remplir
+
+### Être .red[extensible] par programmation pour s'adapter aux besoins spécifiques
+
+
+[//]: #######################################################################
+---
+
+## Les gestionnaires de configuration traditionnels :
 
 ### **Ansible**
 
 ### **Puppet**
 
-### Chef
+### .grey[Chef]
 
-### Salt
+### .grey[Salt]
 
-### 👉 https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software
+### .grey[...]
+
+### .grey[👉 https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software]
 
 ## Un gestionnaire de configuration un peu spécial :
 
@@ -456,23 +527,26 @@ template: with-logo
 
 ## Vocabulaire
 
-### On décrit les groupes de **`nodes`** et leurs paramétrages dans un **`inventory`**
+### On décrit les groupes de `nodes` dans un `inventory`
 
-### On execute un **`playbook`** sur un un groupe de serveurs de l'**`inventory`**
+### On execute un `playbook` sur un un groupe de `nodes`
 
-### Un **`playbook`** est un fichier YAML constitué d'une liste de **`tasks`**
+### Un `playbook` est un fichier .red[YAML] constitué d'une liste de `tasks`
 
-### Une **`task`** appel un **`module`** avec des paramètres
+### Une `task` upload et execute un `module` sur chacun des `nodes`
 
-### Un **`module`** est un morceau de code (généralement Python) qui s'execute sur le **`node`**
+### Un `module` est un morceau de code (généralement .red[Python]) qui s'execute sur le `node`
 
-### Il est possible de regrouper des **`tasks`** dans un **`role`**
+### Il est possible de regrouper des `tasks` dans un `role`
 
-## 
+### Un language de `templates` (Jinja2) est fourni pour créer des fichiers de configuration
+
+???
+Inventory statique ou dynamique
 
 [//]: #######################################################################
 ---
-
+exclude: true
 ## Résumé
 
 .center[<div class="mermaid">
@@ -518,32 +592,58 @@ template: with-logo
 
 ### Le `module` est exécuté avec ses paramètres et retourne le résultat à la `task`
 
+### On peut stocker le résultat du `module` dans une variable
+
+### On peut utiliser les variables dans les `tasks` suivantes
 
 [//]: #######################################################################
 ---
 
-## Templates
+## `modules` essentiels (indempotents) :
 
-### Le module `template`
+### file
+
+### user
+
+### package
+
+### service
+
+### template
+
+### .grey[command] (.red[peut casser l'idempotence!!])
+
+### ...
+
+https://docs.ansible.com/ansible/latest/collections/index_module.html
+
+## + vos propres modules
+
+[//]: #######################################################################
+---
+
+## Exemple de `task` :
 
 ```YAML
 - name: 'Template a file to /etc/file.conf'
   ansible.builtin.template:
-    src: '/mytemplates/foo.j2'
-    dest: '/etc/file.conf'
+    src: 'motd.j2'
+    dest: '/etc/motd'
+  vars:
+    server_role: 'database'
+    environment: 'prod'
 ```
 
-### Des fichiers `jinja` dans le répertoire `templates`
+## Contenu de `./templates/motd.j2` :
 
 ```Django
-Hello {{ name }}!
+Welcome on {{ server_role }}
 
-{% if score > 80 %}
-I'm happy to inform you that you did very well on today's {{ test_name }}.
+{% if environment == 'prod' %}
+You are on a PRODUCTION server, be careful and don't break anything !
 {% else %}
-I'm sorry to inform you that you did not do so well on today's {{ test_name }}.
+You are on {{ environment }} server.
 {% endif %}
-You reached {{ score }} out of {{ max_score }} points.
 ```
 
 [//]: #######################################################################
@@ -551,21 +651,23 @@ You reached {{ score }} out of {{ max_score }} points.
 
 ## Avantages
 
-### Mise en place extrêmement rapide (pas d'agent, pas de serveur)
+### Installation simple sur les `nodes` : Python et un serveur SSH
 
 ### Langage de description YAML très simple
 
-### Facilité d'ajout de ses propres modules Python (attention à l'idempotence !)
+### Facilité d'ajout de ses propres modules Python (ou autre langage)
 
 ## Inconvénients
 
 ### YAML montre ses limites en cas de scénarios complexes
 
+### Ressemble à un langage de programmation sans en être un
+
 ### Aucune sécurité par défaut
 
 ### Pas de serveur central par défaut
 
-### Attention au passage à l'échelle
+### Attention au passage à l'échelle !
 
 ???
 - C'est possible que la clef SSH privée soit distribuée à tout le monde, donnant accès à toutes les machines en root !!
@@ -598,23 +700,88 @@ template: with-logo
 [//]: #######################################################################
 ---
 
-## Mode d'installation du contrôleur (`puppet master`)
+## Mode d'installation du contrôleur
 
-### Le service Puppet Master
+### Le service `puppet master`
 
 ### Les fichiers de description clonés depuis GIT
 
-> L'installation d'une infrastructure Puppet peut être **complexe**.
+> 📣 L'installation d'une infrastructure Puppet peut être **complexe**.
 
-## Mode d'installation des serveurs supervisés (`puppet agent`)
+## Mode d'installation des serveurs supervisés ()
 
-### Un agent Puppet enregisté auprès d'un `puppet master`
+### Un `puppet agent` enregistré auprès d'un `puppet master`
 
-> L'installation d'un serveur supervisé nécessite que l'agent Puppet soit **déjà** installé. Puppet doit donc être inclus à l'installation par un autre moyen.
-
-
+> 📣 L'installation d'un serveur supervisé nécessite que l'agent Puppet soit **déjà** installé. Puppet doit donc être inclus à l'installation par un autre moyen.
 
 
+[//]: #######################################################################
+---
+
+## Vocabulaire
+
+### On décrit les groupes de `nodes` dans un `inventory`
+
+### On execute un `module` sur un un groupe de `nodes`
+
+### Un `manifest` est un fichier .red[.pp] écrit en Puppet (le _DSL_)
+
+### Une `ressource` est la brique de base permettant la modification du système
+
+### Les `ressources` sont regroupées en `class` ou en `defined resources` qui peuvent prendre des paramètres
+
+### Un language de `templates` (ERB) est fourni pour créer des fichiers de configuration
+
+
+[//]: #######################################################################
+---
+
+## Le Langage Puppet
+
+### Comme le YAML de Ansible, il .red[décrit] l'état du système
+
+### Beaucoup plus expressif que YAML, il se rapproche d'un vrai langage de programmation
+
+## Programmation dans Puppet
+
+### Boucles
+
+### Structure conditionnelles
+
+### Variables typées avec une portée de block
+
+### Fonctions (`defined ressources`)
+
+[//]: #######################################################################
+---
+
+## Exemple de `ressources`
+
+```Puppet
+$server_role = 'database'
+$environment = 'prod'
+
+file {
+  '/etc/motd':
+    content => template('nginx/motd.erb'),
+    mode    => '0644',
+    owner   => root,
+}
+```
+## Contenu de `./nginx/templates/motd.erb` :
+
+```ERB
+Welcome on <%= @server_role %>
+
+<% if @environment == 'prod' %>
+You are on a PRODUCTION server, be careful and don't break anything !
+<% else %>
+You are on <%= @environment %> server.
+<% end %>
+```
+
+[//]: #######################################################################
+---
 
 
 
@@ -623,14 +790,13 @@ template: with-logo
 
 
 
+???
+DSL = Langage de description avancé
+Inventory statique ou dynamique
 
+[//]: #######################################################################
 
-
-
-
-
-
-
+## Dé
 
 [//]: #######################################################################
 
