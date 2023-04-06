@@ -980,11 +980,15 @@ template: with-logo
 
 ## Décrire les images toujours exécutés ensemble (`Pod`)
 
-## Créer plusieurs instance de chaque `Pod`
+## Créer plusieurs instance d'un même `pod`
 
-## Répartir les requêtes entre les instances de `Pod` (`Ingress`)
+## Répartir les requêtes entre les instances de `pod` (`Ingress`)
 
-## Créer des réseaux virtuels associés aux `Pods`
+## Créer des réseaux virtuels associés aux `pods`
+
+## Mettre à jour les `pods` avec les nouvelles images
+
+## Relancer les `pods` défectueux
 
 ## Utiliser des configuration .red[YAML] pour stocker toutes ces informations
 
