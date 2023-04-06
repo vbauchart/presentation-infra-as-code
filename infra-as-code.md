@@ -18,14 +18,13 @@ layout: false
 class: center, middle
 template: with-logo
 
-# Petit sondage
+# Sondage rapide
 ---
 template: with-logo
 
-# Sondage
+# Sondage rapide
 
 ## Qui ici maîtrise :
---
 
 ### Git
 
