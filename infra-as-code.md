@@ -6,6 +6,7 @@ class: center, middle
 
 .bigtitle[Infra As Code]
 
+<div class="my-footer"><img src="img/dd-man.png" /><p><a href='https://github.com/vbauchart/presentation-infra-as-code'>https://github.com/vbauchart/presentation-infra-as-code</a></p></div>
 
 ---
 layout: true
@@ -677,10 +678,11 @@ You are on {{ environment }} server.
 [//]: #######################################################################
 ---
 layout: false
-class: center, middle
 template: with-logo
 
 # DEMO
+
+https://github.com/vbauchart/presentation-infra-as-code-ansible-demo
 
 [//]: #######################################################################
 ---
@@ -755,6 +757,25 @@ template: with-logo
 [//]: #######################################################################
 ---
 
+## `ressources` essentielles (idempotentes) :
+
+### file (avec template)
+
+### user
+
+### package
+
+### service
+
+### .grey[exec] (.red[peut casser l'idempotence!!])
+
+### ...
+
+https://www.puppet.com/docs/puppet/7/type.html
+
+[//]: #######################################################################
+---
+
 ## Exemple de `ressources`
 
 ```Puppet
@@ -783,20 +804,187 @@ You are on <%= @environment %> server.
 [//]: #######################################################################
 ---
 
+## Pour chaque `node`
 
+### Le `puppet agent` envoie une requête de mise à jour `puppet master`
 
+### Le `puppet master` .red[compile] tous les fichiers `.pp` associés au `node`
 
+### Le `puppet master` produit un fichier `catalog` contenant une liste de ressources à installer
 
-
+### Le `puppet agent` reçoit le `catalog` et applique les modifications nécessaires
 
 
 ???
-DSL = Langage de description avancé
-Inventory statique ou dynamique
+régulierement = toutes les 1/2/3 heures ?
 
 [//]: #######################################################################
+---
 
-## Dé
+## Avantages
+
+### Langage proche d'un language de programmation
+
+### Language plus expressif limitant le besoin de créer des ressources sur-mesures
+
+### Chaque node requête le master à intervalle régulier
+
+## Inconvénients
+
+### Plus difficile à administrer que Ansible
+
+### Pas d'orchestration multi-nodes, chaque node est autonome
+
+### Problème de scalabilité à cause du serveur central
 
 [//]: #######################################################################
+---
+layout: false
+template: with-logo
+
+# DEMO
+
+https://github.com/vbauchart/presentation-infra-as-code-puppet-demo
+
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Docker
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Qu'est-ce que Docker ?
+
+[//]: #######################################################################
+---
+
+## Docker est un système d'isolation de processus utilisant la technologie de `namespace` du noyau Linux
+
+## Un processus dans `namespace` ne peux pas voir les processus d'un autre `namespace`
+
+## Un processus dans `namespace` n'a pas accès aux utilisateurs, aux fichiers, au réseau d'un autre `namespace`
+
+## Alternative légère à la virtualisation 🤩
+
+## Le nom d'un processus dans un `namespace` est un `container`
+
+???
+Je simplifie à mort
+
+[//]: #######################################################################
+---
+layout: false
+
+background-image: url(img/scientifique_casque.jpg)
+background-size: cover
+class: center, middle
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Docker est-il un gestionnaire de configuration ?
+
+[//]: #######################################################################
+---
+
+## Docker est livré avec un gestionnaire de création d'`image` de disque
+
+### Un mini-langage qui décrit la construction de l'image : `Dockerfile`
+
+### Un système d'héritage d'images pour en créer des nouvelles
+
+### Un système en "couches" (`layers`) qui permet une grande optimisation du stockage et du transfert des images
+
+### Un protocole de `registry` qui permet de stocker des images sur un serveur central
+
+
+[//]: #######################################################################
+---
+
+## Une fois l'`image` Docker généré, elle ne sera plus modifiée et sera distribuée tel quel sur les serveurs d'execution
+
+## Au moment de l'execution:
+
+### Docker peut passer des variables d'environnement au `container`
+
+### Docker peut montrer un "vrai" répertoire dans le `container`
+
+### Docker peut rediriger un "vrai" port vers un `container`
+
+[//]: #######################################################################
+---
+
+## Plus besoin d'installer des serveurs, il suffit de récupérer l'`image`
+
+## Chaque serveur n'a besoin que d'un démon Docker et rien d'autre
+
+## On peut lancer plusieurs `containers` sans crainte de conflit
+
+[//]: #######################################################################
+---
+layout: false
+template: with-logo
+
+# DEMO
+
+https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
+
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Kubernetes
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Kubernetes
+
+---
+
+## OK, Docker est cool 😎, mais :
+
+### Une fois qu'on a toutes nos `images`, qui les exécute ?
+
+### Comment faire pour que les `containers` se parlent entre eux ?
+
+### Et s'ils sont démarrés sur des machines différentes ?
+
+### Quand un serveur attend ses limites, il faut créer autre serveur pour lancer les `containers` suivants ?
+
+## Comment gérer des containers à l'échelle d'un SI ? 🏗️
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Fonctionnalités de Kubernetes
+
+---
+
+
+## Décrire les images toujours exécutés ensemble (`Pod`)
+
+## Créer plusieurs instance de chaque `Pod`
+
+## Répartir les requêtes entre les instances de `Pod` (`Ingress`)
+
+## Créer des réseaux virtuels associés aux `Pods`
+
+## Utiliser des configuration .red[YAML] pour stocker toutes ces informations
 
