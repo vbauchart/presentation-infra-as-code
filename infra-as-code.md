@@ -546,37 +546,6 @@ Inventory statique ou dynamique
 
 [//]: #######################################################################
 ---
-exclude: true
-## Résumé
-
-.center[<div class="mermaid">
-  flowchart TB
-
-  subgraph nodes
-  Inventory --> Group1
-  Inventory --> Group2
-  Group1 --> Node1
-  Group1 --> Node2
-  Group2 --> Node2
-  Group2 --> Node3
-  end
-
-  subgraph tasks
-  Playbook --> tasks1
-  Playbook --> tasks2
-  Playbook --> role1
-  Playbook --> role2
-  role1    --> task4
-  role1    --> task5
-  role2    --> task7
-  role2    --> task8
-  end
-
-  Playbook -.-> Group1
-</div>]
-
-[//]: #######################################################################
----
 
 ## Pour chaque `playbook`
 
@@ -844,6 +813,38 @@ template: with-logo
 # DEMO
 
 https://github.com/vbauchart/presentation-infra-as-code-puppet-demo
+
+[//]: #######################################################################
+---
+layout: false
+template: with-logo
+
+# Ansible VS Puppet
+
+
+.center[<div class="mermaid">
+  flowchart TD
+
+  subgraph Ansible
+  Playbook([Playbook]) --ssh--> Node1
+  Playbook([Playbook]) --ssh-->  Node2
+  Playbook([Playbook]) --ssh-->  Node3
+  Playbook([Playbook]) --ssh-->  Node4
+  end
+</div>]
+
+.center[<div class="mermaid">
+  flowchart BT
+  
+  subgraph Puppet
+  Agent1 --request--> Master([Master])
+  Agent2 --request--> Master([Master])
+  Agent3 --request--> Master([Master])
+  Agent4 --request--> Master([Master])
+  end
+
+</div>]
+
 
 [//]: #######################################################################
 [//]: #######################################################################
