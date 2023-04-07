@@ -43,6 +43,31 @@ template: with-logo
 --
 ### Kubernetes
 
+--
+### Visual Studio Code
+
+[//]: #######################################################################
+
+---
+layout: false
+template: with-logo
+
+# Présentations
+
+## Arolla
+
+### ESN spécialisé dans le Craft
+
+### Le Craft : bonnes pratiques de développement : TDD, BDD, DDD
+
+### https://www.dunod.com/sciences-techniques/software-craft-tdd-clean-code-et-autres-pratiques-essentielles
+
+## Vincent Bauchart
+
+### Consultant Devops Senior
+
+### 15 ans d'expérience
+
 
 [//]: #######################################################################
 [//]: #######################################################################
@@ -57,13 +82,13 @@ template: with-logo
 
 ## 2. Les outils d'Infrastructure as Code
 
-## 3. Les Devs et les Ops sont dans un bateau
+## 3. Everything As Code
 
 # Objectifs
 
-## Comprendre les concepts communs de tous les outils
+## Comprendre les grands concepts communs de tous les outils d'Infrastructure As Code
 
-## Comprendre les enjeux d'organisations et de responsabilité
+## Comprendre les nouveaux enjeux d'organisations et de responsabilité
 
 ???
 
