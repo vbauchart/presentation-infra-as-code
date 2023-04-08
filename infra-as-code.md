@@ -49,25 +49,69 @@ template: with-logo
 [//]: #######################################################################
 
 ---
-layout: false
+layout: true
 template: with-logo
 
-# Présentations
+# Arolla
 
-## Arolla
+---
 
-### ESN spécialisé dans le Craft
+## ESN spécialisé dans le Craft
 
-### Le Craft : bonnes pratiques de développement : TDD, BDD, DDD
+### Développement, Architecture, Devops
+
+### Organisation de meetups (Paris)
+
+## Le Craft : bonnes pratiques de développement
+
+### TDD (Test Driven Development)
+
+### BDD (Behavior Driven Development)
+
+### DDD (Domain Driven Design)
+
+### Clean Code
+
+### Clean Architecture
 
 ### https://www.dunod.com/sciences-techniques/software-craft-tdd-clean-code-et-autres-pratiques-essentielles
 
-## Vincent Bauchart
 
-### Consultant Devops Senior
+#[//]: #######################################################################
+
+---
+
+.center[![Arolla Craft Book](img/craft-book.jpeg)]
+
+
+[//]: #######################################################################
+
+---
+
+layout: false
+template: with-logo
+
+# Vincent Bauchart
+
+## Parcours
+
+### UPJV DESS ISRI
+
+### Consultant Devops
 
 ### 15 ans d'expérience
 
+## Compétences
+
+### Linux
+
+### Puppet, Ansible, Docker
+
+### AWS (Amazon Web Services)
+
+### Management
+
+### Sécurité
 
 [//]: #######################################################################
 [//]: #######################################################################
@@ -1017,3 +1061,7 @@ template: with-logo
 
 ## Utiliser des configuration .red[YAML] pour stocker toutes ces informations
 
+[//]: #######################################################################
+---
+
+##
