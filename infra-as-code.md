@@ -62,7 +62,7 @@ template: with-logo
 
 ### Organisation de meetups (Paris)
 
-## Le Craft : bonnes pratiques de développement
+## Le Craft : pratiques de développement au service
 
 ### TDD (Test Driven Development)
 
@@ -70,7 +70,7 @@ template: with-logo
 
 ### DDD (Domain Driven Design)
 
-### Clean Code
+### Clean Code (KISS, DRY, YAGNI, SOLID, ...)
 
 ### Clean Architecture
 
@@ -106,6 +106,8 @@ template: with-logo
 ### Linux
 
 ### Puppet, Ansible, Docker
+
+### Python, Go
 
 ### AWS (Amazon Web Services)
 
@@ -687,7 +689,7 @@ You are on {{ environment }} server.
 [//]: #######################################################################
 ---
 
-## Avantages
+## Avantages 👍
 
 ### Installation simple sur les `nodes` : Python et un serveur SSH
 
@@ -858,7 +860,7 @@ régulierement = toutes les 1/2/3 heures ?
 [//]: #######################################################################
 ---
 
-## Avantages
+## Avantages 👍
 
 ### Langage proche d'un language de programmation
 
@@ -1039,29 +1041,54 @@ template: with-logo
 
 [//]: #######################################################################
 ---
-layout: true
-template: with-logo
-
-# Fonctionnalités de Kubernetes
-
----
 
 
-## Décrire les images toujours exécutés ensemble (`Pod`)
+## Décrire des groupes d'images Docker (`Pod`)
 
-## Créer plusieurs instance d'un même `pod`
+## Créer plusieurs instance (`replicat`) d'un même `pod`
 
 ## Répartir les requêtes entre les instances de `pod` (`Ingress`)
 
 ## Créer des réseaux virtuels associés aux `pods`
 
-## Mettre à jour les `pods` avec les nouvelles images
-
-## Relancer les `pods` défectueux
+## Mettre à jour les `pods` avec les nouvelles images et relancer les `pods` défectueux
 
 ## Utiliser des configuration .red[YAML] pour stocker toutes ces informations
 
 [//]: #######################################################################
 ---
 
-##
+## DEMO 
+
+https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
+
+[//]: #######################################################################
+---
+
+## Avantages 👍
+
+### Séparation complète architecture hardware/software
+
+### Homogéniété de deploiement applicatif
+
+### Ajout de puissance globale par simple ajout d'un node (scalabilité)
+
+## Inconvénients 💩
+
+### Déplacement de la complexité sur l'administration de Kubernetes (Sécurité, mise à jour, ...)
+
+### Devenu standard de-facto, au détriment des autres solutions
+
+???
+Kubernetes As a Service
+Autres solutions: AWS ECS, Nomad
+
+
+[//]: #######################################################################
+[//]: #######################################################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Terraform
