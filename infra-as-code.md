@@ -1243,7 +1243,7 @@ template: with-log
 
 ## Ces outils ont totalement changé la façon d'administrer un parc de machines
 
-## Il est possible de gérer le code comme n'importe quel code source
+## Il est possible de gérer ce code un "vrai" developpeur
 
 ### Utilisation d'IDE évolués offrant l'autocomplétion et la vérification de syntaxe (`Visual Code`)
 
@@ -1251,16 +1251,63 @@ template: with-log
 
 ## Possibilité de tests avancés
 
+### Tests unitaires
+
 ### Tester en local
 
 ### Tester en "réel"
 
-### Tests unitaires
+
+[//]: ################################
+[//]: ################################
+---
+layout: false
+class: center, middle
+template: with-logo
+
+# Everything As Code
+
+[//]: ################################
+---
+layout: true
+template: with-logo
+
+# Everything As Code
+
+---
+
+## Le mouvement `Infrastructure As Code` s'étend progressivement à toutes étapes de conception logiciel
+
+## IDE As Code
+
+### Visual Code
+
+### Gitpod
+
+## CI/CD As Code
+
+### Gitlab CI
+### Github Actions
+
+## Testing As Code"
+
+### Coder les Tests 
+
+## Network As Code
+
+### Controler les routeurs et switchs, ExaBGP
 
 
+[//]: ################################
+---
 
+## Ces méthodes ont un impact sur le métier
 
+### DEVOPS
 
+### SRE
+
+### Team Topology (platform teams)
 
 
 
