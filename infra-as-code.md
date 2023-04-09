@@ -46,7 +46,7 @@ template: with-logo
 --
 ### Visual Studio Code
 
-[//]: #######################################################################
+[//]: ################################
 
 ---
 layout: true
@@ -77,14 +77,14 @@ template: with-logo
 ### https://www.dunod.com/sciences-techniques/software-craft-tdd-clean-code-et-autres-pratiques-essentielles
 
 
-#[//]: #######################################################################
+#[//]: ################################
 
 ---
 
 .center[![Arolla Craft Book](img/craft-book.jpeg)]
 
 
-[//]: #######################################################################
+[//]: ################################
 
 ---
 
@@ -119,8 +119,8 @@ template: with-logo
 
 ### https://fr.linkedin.com/in/vincent-bauchart-4a184560
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 
 ---
 layout: false
@@ -143,8 +143,8 @@ template: with-logo
 ???
 
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -153,14 +153,14 @@ template: with-logo
 
 # Problématique par l'exemple
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
 
 # Problématique
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Il faut mettre à jour la configuration SSH sur les 2000 serveurs.
@@ -171,14 +171,14 @@ template: with-logo
 --
 ### J'utilise un script Bash qui appelle un sed en SSH dans une boucle `for` ? 🤨
 
-[//]: #######################################################################
+[//]: ################################
 ---
 ## Les équipes de tests me demandent de créer un environnement identique à la production pour tester de bout en bout.
 
 --
 ### Je fais une demande des 16 serveurs nécessaires et je configure tout à la main ? 😰
 
-[//]: #######################################################################
+[//]: ################################
 ---
 ## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs frontaux !
 
@@ -206,7 +206,7 @@ template: with-logo
 --
 ### 3 mois après, c'est toujours la panique, car j'ai oublié de monitorer les 8 nouvelles machines et une des VM a un problème depuis des semaines et personne ne l'a remarqué 🙃
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -215,7 +215,7 @@ template: with-logo
 # Premières pistes
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 template: with-logo
@@ -234,7 +234,7 @@ template: with-logo
 
 ## ➡️ Augmenter la vitesse
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 template: with-logo
@@ -256,8 +256,8 @@ template: with-logo
 
 
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -265,14 +265,14 @@ template: with-logo
 
 # Automatisation ?
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
 
 # "`Infra As Code`"
 
-[//]: #######################################################################
+[//]: ################################
 ---
 ## 🤖 Utiliser un outil de développement
 
@@ -292,7 +292,7 @@ template: with-logo
 
 ### Vérifier les situations spécifiques
 
-[//]: #######################################################################
+[//]: ################################
 ---
 ## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
 
@@ -329,7 +329,7 @@ $ git push                               # la CI/CD prend le relais
 
 ### Suivre le déploiement dans l'application de monitoring ☕
 
-[//]: #######################################################################
+[//]: ################################
 ---
 ## Dans cette présentation, nous allons voir les outils suivants :
 
@@ -354,8 +354,8 @@ $ git push                               # la CI/CD prend le relais
 ### *Ansible*
 
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -364,7 +364,7 @@ template: with-logo
 # Les gestionnaires de configuration
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
@@ -385,7 +385,7 @@ template: with-logo
 ### Redémarre des services
 
 
-[//]: #######################################################################
+[//]: ################################
 
 ---
 
@@ -403,7 +403,7 @@ template: with-logo
 ## 👉 Un script shell semble pouvoir faire l'affaire !! 👈
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Un script shell par produit
@@ -427,7 +427,7 @@ systemctl restart nginx
 
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Problèmes à gérer:
@@ -444,7 +444,7 @@ systemctl restart nginx
 
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## *Petite pause vocabulaire !*
@@ -462,7 +462,7 @@ abs(abs(-5)) = abs(-5) = 5
 asb(abs(abs(-5))) = abs(abs(-5)) = abs(-5) = 5
 ```
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Idempotence pour de la configuration :
@@ -493,7 +493,7 @@ echo "listen 80" >> /etc/nginx/conf.d/default.conf
 sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 ```
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Pourquoi la notion d'_idempotence_ stricte est importante pour un gestionnaire de configuration ?
@@ -507,7 +507,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 ### On veut vérifier tous les attributs d'un élément, pas seulement son existence
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Problèmes à gérer:
@@ -525,7 +525,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 ### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres differents ?
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Principales fonctionnalités attendues :
@@ -539,7 +539,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 ### Être .red[extensible] par programmation pour s'adapter aux besoins spécifiques
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Les gestionnaires de configuration traditionnels :
@@ -560,8 +560,8 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
 ### Docker
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -569,14 +569,14 @@ template: with-logo
 
 # Ansible
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
 
 # Ansible
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Mode d'installation du contrôleur (`Control Node`)
@@ -597,7 +597,7 @@ template: with-logo
 
 > On notera le peu de prérequis nécessaires, en particulier sur les serveurs supervisés
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Vocabulaire
@@ -619,7 +619,7 @@ template: with-logo
 ???
 Inventory statique ou dynamique
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Pour chaque `playbook`
@@ -640,7 +640,7 @@ Inventory statique ou dynamique
 
 ### On peut utiliser les variables dans les `tasks` suivantes
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## `modules` essentiels (indempotents) :
@@ -663,7 +663,7 @@ https://docs.ansible.com/ansible/latest/collections/index_module.html
 
 ## + vos propres modules
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Exemple de `task` :
@@ -690,7 +690,7 @@ You are on {{ environment }} server.
 {% endif %}
 ```
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Avantages 👍
@@ -718,7 +718,7 @@ You are on {{ environment }} server.
 - Tentation d'utiliser le module `shell` qui casse tout l'interêt de Ansible
 - Il est cependant possible de faire propre avec Ansible avec des règles strictes
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 template: with-logo
@@ -727,7 +727,7 @@ template: with-logo
 
 https://github.com/vbauchart/presentation-infra-as-code-ansible-demo
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -735,14 +735,14 @@ template: with-logo
 
 # Puppet
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
 
 # Puppet
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Mode d'installation du contrôleur
@@ -760,7 +760,7 @@ template: with-logo
 > 📣 L'installation d'un serveur supervisé nécessite que l'agent Puppet soit **déjà** installé. Puppet doit donc être inclus à l'installation par un autre moyen.
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Vocabulaire
@@ -778,7 +778,7 @@ template: with-logo
 ### Un language de `templates` (ERB) est fourni pour créer des fichiers de configuration
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Le Langage Puppet
@@ -797,7 +797,7 @@ template: with-logo
 
 ### Fonctions (`defined ressources`)
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## `ressources` essentielles (idempotentes) :
@@ -816,7 +816,7 @@ template: with-logo
 
 https://www.puppet.com/docs/puppet/7/type.html
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Exemple de `ressources`
@@ -844,7 +844,7 @@ You are on <%= @environment %> server.
 <% end %>
 ```
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Pour chaque `node`
@@ -861,7 +861,7 @@ You are on <%= @environment %> server.
 ???
 régulierement = toutes les 1/2/3 heures ?
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Avantages 👍
@@ -880,7 +880,7 @@ régulierement = toutes les 1/2/3 heures ?
 
 ### Problème de scalabilité à cause du serveur central
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 template: with-logo
@@ -889,7 +889,7 @@ template: with-logo
 
 https://github.com/vbauchart/presentation-infra-as-code-puppet-demo
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 template: with-logo
@@ -921,8 +921,8 @@ template: with-logo
 </div>]
 
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -930,14 +930,14 @@ template: with-logo
 
 # Docker
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
 
 # Qu'est-ce que Docker ?
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Docker est un système d'isolation de processus utilisant la technologie de `namespace` du noyau Linux
@@ -953,13 +953,13 @@ template: with-logo
 ???
 Je simplifie à mort
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 .fit[![Process as VR](img/scientifique_casque.jpg)]
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Quel est le rapport avec l'Infra As Code ?
@@ -975,7 +975,7 @@ Je simplifie à mort
 ### Un protocole de `registry` qui permet de stocker des images sur un serveur central
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Une fois l'`image` Docker généré, elle ne sera plus modifiée et sera distribuée tel quel sur les serveurs d'execution
@@ -988,7 +988,7 @@ Je simplifie à mort
 
 ### Docker peut rediriger un "vrai" port vers un `container`
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: false
 template: with-logo
@@ -998,7 +998,7 @@ template: with-logo
 https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
@@ -1011,14 +1011,14 @@ template: with-logo
 
 ## On peut lancer plusieurs `containers` sans crainte de conflit
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Plus besoin de gestionnaire de configuration
 
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -1026,7 +1026,7 @@ template: with-logo
 
 # Kubernetes
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
@@ -1047,7 +1047,7 @@ template: with-logo
 
 ## Comment gérer des containers à l'échelle d'un SI ? 🏗️
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 
@@ -1063,14 +1063,14 @@ template: with-logo
 
 ## Utiliser des configuration .red[YAML] pour stocker toutes ces informations
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## DEMO 
 
 https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
 
-[//]: #######################################################################
+[//]: ################################
 ---
 
 ## Avantages 👍
@@ -1092,8 +1092,8 @@ Kubernetes As a Service
 Autres solutions: AWS ECS, Nomad
 
 
-[//]: #######################################################################
-[//]: #######################################################################
+[//]: ################################
+[//]: ################################
 ---
 layout: false
 class: center, middle
@@ -1101,7 +1101,7 @@ template: with-logo
 
 # Terraform
 
-[//]: #######################################################################
+[//]: ################################
 ---
 layout: true
 template: with-logo
@@ -1135,7 +1135,7 @@ template: with-logo
 ### ...
 
 
-[//]: #######################################################################
+[//]: ################################
 ---
 ## A chaque lancement, Terraform va lire le contenu des fichiers de description (format .red[HCL])
 
@@ -1152,3 +1152,7 @@ template: with-logo
 ### Vérifie l'état de la ressource distante (`GET /ressource/id`)
 
 ### Met à jour si les paramètres different (`POST /ressource/id/update`)
+
+[//]: ################################
+---
+
