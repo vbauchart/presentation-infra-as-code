@@ -101,6 +101,8 @@ template: with-logo
 
 ### 15 ans d'expérience
 
+### Automatisation, Industrialisation, Administration système
+
 ## Compétences
 
 ### Linux
@@ -114,6 +116,8 @@ template: with-logo
 ### Management
 
 ### Sécurité
+
+### https://fr.linkedin.com/in/vincent-bauchart-4a184560
 
 [//]: #######################################################################
 [//]: #######################################################################
@@ -132,7 +136,7 @@ template: with-logo
 
 # Objectifs
 
-## Comprendre les grands concepts communs de tous les outils d'Infrastructure As Code
+## Vue d'ensemble des grands concepts communs de tous les outils d'Infrastructure As Code
 
 ## Comprendre les nouveaux enjeux d'organisations et de responsabilité
 
@@ -957,6 +961,8 @@ Je simplifie à mort
 
 [//]: #######################################################################
 ---
+
+## Quel est le rapport avec l'Infra As Code ?
 
 ## Docker est livré avec un gestionnaire de création d'`image` de disque
 
