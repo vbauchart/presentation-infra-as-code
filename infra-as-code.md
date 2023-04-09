@@ -1195,7 +1195,25 @@ template: with-logo
 [//]: ################################
 ---
 
+## Certains outils peuvent être détournés, adaptés
 
+## Il est souvent nécéssaire d'utiliser plusieurs outils pour couvrir tous les besoins, par exemple :
+
+### Ansible+Kubernetes
+
+### Puppet + Docker
+
+### Puppet + Ansible
+
+## Les fournisseurs Clouds fournissent également leurs propres solutions, par exemple :
+
+### AWS fournit un système "maison" pour construire des images de VM (`AMI`) et les lancer automatiquement (`Autoscaling Groups`)
+
+### GCP peut gérer un serveur Kubernetes sur lequel on peut "brancher" ses propres serveurs
+
+???
+AWS ECS alternative à K8S
+Heroku, Clever CLoud
 
 [//]: ################################
 ---
@@ -1206,7 +1224,7 @@ template: with-log
 
 ---
 
-## Avec tous ces outils .red[coder] toutes les étapes du cycle de vie d'une application :
+## Tous ces outils permettent de .red[coder] toutes les étapes du cycle de vie d'une application :
 
 ### l'infrastructure réseau, système
 
@@ -1223,7 +1241,21 @@ template: with-log
 [//]: ################################
 ---
 
-## Peu importes l'outil choisi, il est possible de gérer le code comme un code de developpement 👍
+## Ces outils ont totalement changé la façon d'administrer un parc de machines
+
+## Il est possible de gérer le code comme n'importe quel code source
+
+### Utilisation d'IDE évolués offrant l'autocomplétion et la vérification de syntaxe (`Visual Code`)
+
+### Versionning `GIT` obligatoire
+
+## Possibilité de tests avancés
+
+### Tester en local
+
+### Tester en "réel"
+
+### Tests unitaires
 
 
 
