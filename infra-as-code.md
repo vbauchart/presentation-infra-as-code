@@ -1109,3 +1109,46 @@ template: with-logo
 # Terraform
 
 ---
+
+## Créé pour gérer la création des ressources Cloud :
+
+### Amazon Web Services
+
+### Google Cloud Platform
+
+### Microsoft Azure
+
+### VMWare
+
+### OpenStack
+
+### ...
+
+## Plus globablement, c'est un outil spécialisé pour gérer des ressources externes créé par API HTTP CRUD :
+
+### Active Directory
+
+### Jira/Confluence
+
+### Gitlab
+
+### ...
+
+
+[//]: #######################################################################
+---
+## A chaque lancement, Terraform va lire le contenu des fichiers de description (format .red[HCL])
+
+## Si la ressource distante n'existe pas:
+
+### Créer la ressource distante (`POST /ressource/create`)
+
+### Stocke l'identifiant de la ressource localement (fichier `state`)
+
+## Si la ressource distante existe déjà
+
+### Recupère l'identifiant localement (fichier `state`)
+
+### Vérifie l'état de la ressource distante (`GET /ressource/id`)
+
+### Met à jour si les paramètres different (`POST /ressource/id/update`)
