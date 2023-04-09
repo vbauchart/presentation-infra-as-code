@@ -951,18 +951,9 @@ Je simplifie à mort
 
 [//]: #######################################################################
 ---
-layout: false
 
-background-image: url(img/scientifique_casque.jpg)
-background-size: cover
-class: center, middle
+.fit[![Process as VR](img/scientifique_casque.jpg)]
 
-[//]: #######################################################################
----
-layout: true
-template: with-logo
-
-# Docker est-il un gestionnaire de configuration ?
 
 [//]: #######################################################################
 ---
@@ -993,6 +984,20 @@ template: with-logo
 
 [//]: #######################################################################
 ---
+layout: false
+template: with-logo
+
+# DEMO
+
+https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
+
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Docker est-il un gestionnaire de configuration ?
 
 ## Plus besoin d'installer des serveurs, il suffit de récupérer l'`image`
 
@@ -1002,12 +1007,9 @@ template: with-logo
 
 [//]: #######################################################################
 ---
-layout: false
-template: with-logo
 
-# DEMO
+## Plus besoin de gestionnaire de configuration
 
-https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
 
 [//]: #######################################################################
 [//]: #######################################################################
@@ -1092,3 +1094,12 @@ class: center, middle
 template: with-logo
 
 # Terraform
+
+[//]: #######################################################################
+---
+layout: true
+template: with-logo
+
+# Terraform
+
+---
