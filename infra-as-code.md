@@ -1154,6 +1154,107 @@ template: with-logo
 
 ### Met à jour si les paramètres different (`POST /ressource/id/update`)
 
+
 [//]: ################################
 ---
+layout: false
+template: with-logo
+
+# DEMO
+
+https://github.com/vbauchart/aws-terraform-ansible-demo
+
+[//]: ################################
+---
+layout: true
+template: with-logo
+
+# Remise en perspective
+
+---
+## Dans cette présentation, nous avons vu :
+
+## 1. Les gestionnaires de configuration
+
+### Puppet, Ansible
+
+### *Docker* : Usage permetant d'arriver au même résultat qu'un gestionnaire de configuration
+
+## 2. Les provisionneurs
+
+### Terraform
+
+### *Ansible* : possède des modules indempotents pour interagir avec des API HTTP CRUD, et non-HTTP comme des switch, des routeurs...
+
+## 3. Les orchestrateurs
+
+### Kubernetes
+
+### *Ansible* : Le module `shell` permet de lancer des tâches parallèle sur une ferme de calcul
+
+[//]: ################################
+---
+
+
+
+[//]: ################################
+---
+layout: true
+template: with-log
+
+# Premières Conclusions
+
+---
+
+## Avec tous ces outils .red[coder] toutes les étapes du cycle de vie d'une application :
+
+### l'infrastructure réseau, système
+
+### la configuration des applications
+
+### le déploiement des applications
+
+## Mais aussi:
+
+### Le déploiement du monitoring
+
+### Les procédures d'exploitation
+
+[//]: ################################
+---
+
+## Peu importes l'outil choisi, il est possible de gérer le code comme un code de developpement 👍
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
