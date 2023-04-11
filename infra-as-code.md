@@ -1282,14 +1282,21 @@ template: with-logo
 [//]: ################################
 ---
 
-## Possibilité de tests avancés
-
 ## Tests unitaires
 
-## Tester en CI
+### Test d'un `role` Ansible
+
+### Test d'une `class` Puppet
+
+## Continous Intégration
+
+### Chaque fois que le code est modifié, tous les tests sont lancés
 
 ## Tester en "réel"
 
+### Création d'environnements éphémères sur des branches
+
+### Tests End-To-End
 
 
 [//]: ################################
@@ -1342,18 +1349,23 @@ Cette présentation est faite en Markdown
 ### Les Platform Teams fourni une "interface" pour interagir avec l'infrastructure
 
 ???
-Mots clefs pour vos recherches
 
+[//]: ################################
+[//]: ################################
+---
+layout: false
+class: center, middle
+template: with-logo
 
+# Questions
 
-
-
-
-
-
-
-
-
+[//]: ################################
+[//]: ################################
+---
+layout: false
+background-image: url(img/arolla-backgroud.jpg)
+background-size: cover
+class: center, middle
 
 
 
