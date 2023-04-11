@@ -43,11 +43,42 @@ template: with-logo
 --
 ### Kubernetes
 
---
-### Visual Studio Code
 
 [//]: ################################
+---
+layout: false
+template: with-logo
 
+# Vincent Bauchart
+
+## Parcours
+
+### UPJV DESS ISRI 2004
+
+### Consultant Devops pour BV Associates (10 ans)
+
+### Ingenico racheté par Worldline (5 ans)
+
+### Arolla depuis 2023
+
+## Compétences
+
+### Linux
+
+### Puppet, Ansible, Docker
+
+### Python, Go
+
+### AWS (Amazon Web Services)
+
+### Management
+
+### Sécurité
+
+.right[https://fr.linkedin.com/in/vincent-bauchart-4a184560]
+
+
+[//]: ################################
 ---
 layout: true
 template: with-logo
@@ -74,51 +105,18 @@ template: with-logo
 
 ### Clean Architecture
 
-### https://www.dunod.com/sciences-techniques/software-craft-tdd-clean-code-et-autres-pratiques-essentielles
-
-
-#[//]: ################################
-
----
-
-.center[![Arolla Craft Book](img/craft-book.jpeg)]
-
 
 [//]: ################################
 
 ---
+### https://www.dunod.com/sciences-techniques/software-craft-tdd-clean-code-et-autres-pratiques-essentielles
 
-layout: false
-template: with-logo
+.fit[
+  .center[![Arolla Craft Book](img/craft-book.jpeg)]
+]
 
-# Vincent Bauchart
 
-## Parcours
-
-### UPJV DESS ISRI
-
-### Consultant Devops
-
-### 15 ans d'expérience
-
-### Automatisation, Industrialisation, Administration système
-
-## Compétences
-
-### Linux
-
-### Puppet, Ansible, Docker
-
-### Python, Go
-
-### AWS (Amazon Web Services)
-
-### Management
-
-### Sécurité
-
-### https://fr.linkedin.com/in/vincent-bauchart-4a184560
-
+[
 [//]: ################################
 [//]: ################################
 
@@ -130,7 +128,7 @@ template: with-logo
 
 ## 1. La problématique du déploiement d'infrastructure
 
-## 2. Les outils d'Infrastructure as Code
+## 2. Les outils d'Infrastructure As Code
 
 ## 3. Everything As Code
 
@@ -1081,11 +1079,15 @@ https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
 
 ### Ajout de puissance globale par simple ajout d'un node (scalabilité)
 
+### Des tonnes de plugins
+
 ## Inconvénients 💩
 
 ### Déplacement de la complexité sur l'administration de Kubernetes (Sécurité, mise à jour, ...)
 
 ### Devenu standard de-facto, au détriment des autres solutions
+
+### Les `pods` sont volatiles, alors que les données statiques
 
 ???
 Kubernetes As a Service
@@ -1172,38 +1174,37 @@ template: with-logo
 # Remise en perspective
 
 ---
-## Dans cette présentation, nous avons vu :
 
 ## 1. Les gestionnaires de configuration
 
 ### Puppet, Ansible
 
-### *Docker* : Usage permetant d'arriver au même résultat qu'un gestionnaire de configuration
+### *Docker* : .grey[Usage permetant d'arriver au même résultat qu'un gestionnaire de configuration]
 
 ## 2. Les provisionneurs
 
 ### Terraform
 
-### *Ansible* : possède des modules indempotents pour interagir avec des API HTTP CRUD, et non-HTTP comme des switch, des routeurs...
+### *Ansible* : .grey[possède des modules indempotents pour interagir avec des API HTTP CRUD, et non-HTTP comme des switch, des routeurs...]
 
 ## 3. Les orchestrateurs
 
 ### Kubernetes
 
-### *Ansible* : Le module `shell` permet de lancer des tâches parallèle sur une ferme de calcul
+### *Ansible* : .grey[Le module `shell` permet de lancer des tâches parallèle sur une ferme de calcul]
 
 [//]: ################################
 ---
 
-## Certains outils peuvent être détournés, adaptés
+## Certains outils peuvent être adaptés aux besoins de l'entreprise.
 
 ## Il est souvent nécéssaire d'utiliser plusieurs outils pour couvrir tous les besoins, par exemple :
 
-### Ansible+Kubernetes
+### Ansible + Kubernetes
 
 ### Puppet + Docker
 
-### Puppet + Ansible
+### Terraform + Ansible
 
 ## Les fournisseurs Clouds fournissent également leurs propres solutions, par exemple :
 
@@ -1224,7 +1225,7 @@ template: with-log
 
 ---
 
-## Tous ces outils permettent de .red[coder] toutes les étapes du cycle de vie d'une application :
+## Tous ces outils permettent de décrire dans du .red[code] toutes les étapes du cycle de vie d'une application :
 
 ### l'infrastructure réseau, système
 
@@ -1238,24 +1239,6 @@ template: with-log
 
 ### Les procédures d'exploitation
 
-[//]: ################################
----
-
-## Ces outils ont totalement changé la façon d'administrer un parc de machines
-
-## Il est possible de gérer ce code un "vrai" developpeur
-
-### Utilisation d'IDE évolués offrant l'autocomplétion et la vérification de syntaxe (`Visual Code`)
-
-### Versionning `GIT` obligatoire
-
-## Possibilité de tests avancés
-
-### Tests unitaires
-
-### Tester en local
-
-### Tester en "réel"
 
 
 [//]: ################################
@@ -1276,34 +1259,72 @@ template: with-logo
 
 ---
 
+
+
+## Ces outils ont totalement changé la façon d'administrer un parc de machines
+
+## Il est possible de gérer ce code un "vrai" developpeur
+
+### Utilisation d'IDE évolués offrant l'autocomplétion et la vérification de syntaxe comme `Visual Code`
+
+### Versionning `GIT`, gestion de branches et tags
+
+## Qualité logicielle
+
+### Keep It Stupid Simple (KISS)
+
+### Don't Repead Yourself (DRY)
+
+### You Ain't Gonna Need It (YAGNI)
+
+### Single Responsibility Principle (SRP)
+
+[//]: ################################
+---
+
+## Possibilité de tests avancés
+
+## Tests unitaires
+
+## Tester en CI
+
+## Tester en "réel"
+
+
+
+[//]: ################################
+---
+
 ## Le mouvement `Infrastructure As Code` s'étend progressivement à toutes étapes de conception logiciel
 
 ## IDE As Code
 
-### Visual Code
+### Devcontainer
 
 ### Gitpod
 
 ## CI/CD As Code
 
 ### Gitlab CI
+
 ### Github Actions
 
-## Testing As Code"
-
-### Coder les Tests 
+### Jenkinsfile
 
 ## Network As Code
 
-### Controler les routeurs et switchs, ExaBGP
+### [Ansible for Cisco](https://docs.ansible.com/ansible/latest/collections/cisco/index.html)
+
+???
+Cette présentation est faite en Markdown
 
 
 [//]: ################################
 ---
 
-## Ces méthodes ont un impact sur le métier
+## Ces méthodes ont un impact sur le métier d'administrateur système :
 
-### DEVOPS
+### DEVOPS / DevSecOps
 
 ### SRE
 
