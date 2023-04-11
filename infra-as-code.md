@@ -1316,23 +1316,33 @@ template: with-logo
 ### [Ansible for Cisco](https://docs.ansible.com/ansible/latest/collections/cisco/index.html)
 
 ???
+Chasse aux actions manuelles
 Cette présentation est faite en Markdown
 
 
 [//]: ################################
 ---
 
-## Ces méthodes ont un impact sur le métier d'administrateur système :
+## Ces méthodes ont un impact sur le métier d'administrateur système, avec des nouveaux modèles d'organisation :
 
-### DEVOPS / DevSecOps
+## DEVOPS
 
-### SRE
+### Rapprochement des metiers de developpeurs et d'administrateur système
 
-### Team Topology (platform teams)
+## Site Reliability Engineers (SRE)
 
+### Culture de l'automatisation
 
+### Travaille main dans la main avec les developpeurs 
 
+## Team Topology (Platform Teams)
 
+### Les équipes de developpements sont résponsable de toute la chaine
+
+### Les Platform Teams fourni une "interface" pour interagir avec l'infrastructure
+
+???
+Mots clefs pour vos recherches
 
 
 
