@@ -24,7 +24,7 @@ template: with-logo
 
 # Sondage rapide
 
-## Qui ici maîtrise :
+## Qui utilise au quotidien :
 
 ### Git
 
@@ -53,9 +53,9 @@ template: with-logo
 
 ## Parcours
 
-### UPJV DESS ISRI 2004
+### UPJV DESS ISRI 2005
 
-### Consultant Devops pour BV Associates (10 ans)
+### Consultant Devops pour BV Associates (11 ans)
 
 ### Ingenico racheté par Worldline (5 ans)
 
@@ -116,7 +116,6 @@ template: with-logo
 ]
 
 
-[
 [//]: ################################
 [//]: ################################
 
@@ -124,7 +123,7 @@ template: with-logo
 layout: false
 template: with-logo
 
-# Plan
+# Sommaire
 
 ## 1. La problématique du déploiement d'infrastructure
 
@@ -134,7 +133,7 @@ template: with-logo
 
 # Objectifs
 
-## Vue d'ensemble des grands concepts communs de tous les outils d'Infrastructure As Code
+## Démystifier quelques outils d'Infrastructure As Code
 
 ## Comprendre les nouveaux enjeux d'organisations et de responsabilité
 
@@ -1250,6 +1249,9 @@ template: with-logo
 
 # Everything As Code
 
+???
+La chasse est ouverte, la chasse aux actions manuelles !!
+
 [//]: ################################
 ---
 layout: true
@@ -1269,7 +1271,7 @@ template: with-logo
 
 ### Versionning `GIT`, gestion de branches et tags
 
-## Qualité logicielle
+## Qualité logicielle, Clean Code
 
 ### Keep It Stupid Simple (KISS)
 
@@ -1278,6 +1280,12 @@ template: with-logo
 ### You Ain't Gonna Need It (YAGNI)
 
 ### Single Responsibility Principle (SRP)
+
+### 
+
+???
+Renvoyer au livre Software Craft
+
 
 [//]: ################################
 ---
@@ -1325,6 +1333,27 @@ template: with-logo
 ???
 Chasse aux actions manuelles
 Cette présentation est faite en Markdown
+
+[//]: ################################
+---
+
+## Presentation As Code
+
+### Remark
+
+### Revealjs
+
+## Diagram As Code
+
+### Mermaid
+
+## CV As Code
+
+### Jsonresume
+
+### https://gitlab.com/vbauchart/resume
+
+
 
 
 [//]: ################################
