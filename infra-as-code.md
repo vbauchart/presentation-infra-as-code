@@ -148,19 +148,21 @@ class: center, middle
 template: with-logo
 
 
-# Problématique par l'exemple
+# Problématique 
+
+## La vie d'un administrateur système
 
 [//]: ################################
 ---
 layout: true
 template: with-logo
 
-# Problématique
+# La vie d'un administrateur système
 
 [//]: ################################
 ---
 
-## Il faut mettre à jour la configuration SSH sur les 2000 serveurs.
+## On vous appelle en urgence, il faut mettre à jour la configuration SSH sur les 2000 serveurs du parc.
 
 --
 ### Je me connecte à tous les serveurs un par un ? 🤦
@@ -168,12 +170,27 @@ template: with-logo
 --
 ### J'utilise un script Bash qui appelle un sed en SSH dans une boucle `for` ? 🤨
 
+--
+### Je traite les cas particuliers 🥲
+
 [//]: ################################
 ---
 ## Les équipes de tests me demandent de créer un environnement identique à la production pour tester de bout en bout.
 
 --
-### Je fais une demande des 16 serveurs nécessaires et je configure tout à la main ? 😰
+### Je me connecter à VMWare pour créer les 16 serveurs 👨‍🔧
+
+--
+### J'installe Redhat sur chaque serveur et je configure les packages de base (SSH, users) 🌡️
+
+--
+### Je retrouve tout ce qui est installé en production 🤔
+
+--
+### Je dois installer des bases de données, des middlewares, des applicatifs? 😰
+
+--
+### Je demande de l'aide aux développeurs 🥺
 
 [//]: ################################
 ---
