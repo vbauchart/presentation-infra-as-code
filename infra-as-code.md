@@ -4,7 +4,7 @@ background-image: url(img/arolla-backgroud.jpg)
 background-size: cover
 class: center, middle
 
-.bigtitle[Infra As Code]
+.bigtitle[Infra As Code et DEVOPS]
 
 <div class="my-footer"><img src="img/dd-man.png" /><p><a href='https://github.com/vbauchart/presentation-infra-as-code'>https://github.com/vbauchart/presentation-infra-as-code</a></p></div>
 
@@ -167,11 +167,9 @@ template: with-logo
 --
 ### Je me connecte à tous les serveurs un par un ? 🤦
 
---
-### J'utilise un script Bash qui appelle un sed en SSH dans une boucle `for` ? 🤨
 
 --
-### Je traite les cas particuliers 🥲
+### Je me rend compte qu'un collègue a changé le mot de passe admin de certains serveurs 🥲
 
 [//]: ################################
 ---
@@ -187,7 +185,7 @@ template: with-logo
 ### Je retrouve tout ce qui est installé en production 🤔
 
 --
-### Je dois installer des bases de données, des middlewares, des applicatifs? 😰
+### Je dois installer des bases de données, des middlewares, des applicatifs 😰
 
 --
 ### Je demande de l'aide aux développeurs 🥺
@@ -206,7 +204,7 @@ template: with-logo
 ### J'installe et configure les 8 VMs 💀
 
 --
-### Je déclare les nouvelles machines dans le load-balancer 🤨
+### Je fais une demande à l'équipe réseau pour ouvrir les ports 🤨
 
 --
 ### Je ne trouve pas la documentation, je cherche le collègue qui a fait la première installation. 🏃
@@ -215,10 +213,11 @@ template: with-logo
 ### Une fois terminé le site renvoie une erreur une fois sur 10 😰
 
 --
-### C'est la panique, je passe la nuit à trouver la virgule en trop qui fait tout planter 😑
+### C'est la panique, je passe la nuit à trouver la virgule en trop qui faisait tout planter 😑
 
 --
-### 3 mois après, c'est toujours la panique, car j'ai oublié de monitorer les 8 nouvelles machines et une des VM a un problème depuis des semaines et personne ne l'a remarqué 🙃
+### 3 mois plus tard, je me rend compte que j'ai oublié de monitorer les 8 nouvelles machines et une des VM a un problème depuis des semaines et personne ne l'a remarqué 🙃
+
 
 [//]: ################################
 ---
@@ -238,7 +237,7 @@ template: with-logo
 
 ## Ne plus faire à la main les tâches répétitives
 
-## Ne pas dépendre d'autres équipes
+## Augmenter l'autonomie des équipes
 
 ## Ne pas dépendre d'une documentation périmée
 
@@ -284,36 +283,59 @@ template: with-logo
 layout: true
 template: with-logo
 
-# "`Infra As Code`"
+# Automatisation ?
 
 [//]: ################################
 ---
-## 🤖 Utiliser un outil de développement
 
-### Choisir le (ou les) bons frameworks adaptés à nos besoins
+## `Fournir` des ressources au travers d'API
 
-### Connaître les limites de chaque outil
+### Machines virtuelles
 
-## 🚩 Versionner
+### Bases de données
 
-### Ajouter des point de sauvegarde
+### Ouvertures réseaux
 
-### Expérimenter 
+## `Coder` l'installations et la configuration des systèmes
+
+### OS
+
+### Configuration système
+
+### Déploiement applicatif
+
+[//]: ################################
+---
+## 🤖 Utiliser les outils des développeurs
+
+### Choisir des langages et des frameworks adaptés à nos besoins
+
+### Utiliser des outils d'aide au développement (IDE, IA, linters, etc...)
+
+### Utiliser des méthodes connues comme le Craft
 
 ## 🎠Tester
 
-### Reproduire ce qu'il va se passer
+### Vérifier que le résultat de l'automatisation est conforme au résultat attendu
 
-### Vérifier les situations spécifiques
+### Vérifier les situations spécifiques et cas limites
+
+## 🚩 Versionner
+
+### Sauvegarder l'avancement
+
+### Expérimenter dans des branches de code
+
+### Identifier quel base de code est déployée
 
 [//]: ################################
 ---
 ## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
 
 --
-## "Dans le Meilleur des mondes"
+## Dans le monde "idéal":
 
-### Validation sur l'environnement de test :
+### Modification du code de l'infrastructure :
 ```sh
 $ git checkout develop                   # branche principale de dev
 $ git checkout -b upgrade-servers        # créer branche de test
@@ -322,7 +344,7 @@ $ git commit -am'upgrade to 10 servers'  # ajoute message pertinent
 $ git push                               # la CI/CD prend le relais
 ```
 
-### Suivre le déploiement dans l'application de monitoring ☕
+### Suivre le déploiement dans l'environnement de test ☕
 
 ### Tester
 
@@ -331,21 +353,24 @@ $ git push                               # la CI/CD prend le relais
 ---
 ## Mon site est victime de son succès, il faut passer de 2 à 10 serveurs Web
 
-## "Dans le Meilleur des mondes"
+## Dans le monde "idéal":
 
 ### Mise en production :
 
 ```sh
 $ git checkout master                    # branche de release
-$ git merge upgrade-servers              # merge la branche
+*$ git merge upgrade-servers              # merge la branche
 $ git push                               # la CI/CD prend le relais
 ```
 
 ### Suivre le déploiement dans l'application de monitoring ☕
 
+--
+.image-flash[![Alt text](img/thats-iac.gif)]
+
 [//]: ################################
 ---
-## Dans cette présentation, nous allons voir les outils suivants :
+## État de l'art de l'Infrastructure As Code
 
 ## 1. Les gestionnaires de configuration
 
@@ -353,7 +378,6 @@ $ git push                               # la CI/CD prend le relais
 
 ### Ansible
 
-### *Docker*
 
 ## 2. Les provisionneurs
 
@@ -363,9 +387,7 @@ $ git push                               # la CI/CD prend le relais
 
 ## 3. Les orchestrateurs
 
-### Kubernetes
-
-### *Ansible*
+### Kubernetes/Docker
 
 
 [//]: ################################
@@ -386,7 +408,7 @@ template: with-logo
 # Les gestionnaires de configuration
 ---
 
-## S'execute sur une machine en fonctionnement
+## S'execute sur une machine en _fonctionnement_
 
 ### Installe des packages
 
@@ -395,6 +417,8 @@ template: with-logo
 ### Créer des fichiers de configuration
 
 ### Lance des commandes de configuration
+
+### Upload des fichiers
 
 ### Redémarre des services
 
@@ -409,7 +433,7 @@ template: with-logo
 
 ### Adapter le fichier `/etc/nginx/conf.d/default.conf` à nos besoins
 
-### Ajouter un utilisateur `app01`
+### Ajouter un utilisateur `appuser01`
 
 ### Redémarrer le service `nginx`
 
@@ -444,7 +468,7 @@ systemctl restart nginx
 [//]: ################################
 ---
 
-## Problèmes à gérer:
+## Problèmes à gérer :
 
 ### Comment gérer un parc hétérogène (Debian, Redhat, ...) ?
 
@@ -469,11 +493,13 @@ systemctl restart nginx
 
 ### Par exemple, la fonction `abs()` est idempotente :
 
-```math
+```
 abs(abs(x)) = abs(x)
+```
 
-abs(abs(-5)) = abs(-5) = 5
-asb(abs(abs(-5))) = abs(abs(-5)) = abs(-5) = 5
+```
+abs(-5) = 5
+asb(abs(abs(-5))) = 5
 ```
 
 [//]: ################################
@@ -481,7 +507,7 @@ asb(abs(abs(-5))) = abs(abs(-5)) = abs(-5) = 5
 
 ## Idempotence pour de la configuration :
 
-### Une opération a le même effet qu'on l'applique une ou plusieurs fois
+### Une opération produit le bon résultat peu importe l'état initial d'une ressource
 
 --
 ```bash
@@ -510,7 +536,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 [//]: ################################
 ---
 
-## Pourquoi la notion d'_idempotence_ stricte est importante pour un gestionnaire de configuration ?
+## Pourquoi la notion d'`idempotence` est importante pour un gestionnaire de configuration ?
 
 ### On veut gérer la mise à jour d'un parc de serveurs quelque soit leur état initial
 
@@ -518,13 +544,13 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
 ### La mise à jour ne doit pas être sensible à une intervention manuelle
 
-### On veut vérifier tous les attributs d'un élément, pas seulement son existence
+### Si la ressource est déjà bien configurée, on ne fait rien
 
 
 [//]: ################################
 ---
 
-## Problèmes à gérer:
+## Problèmes à gérer (v2.0) :
 
 ### Comment gérer un parc hétérogène (Debian, Redhat, ...) ?
 
@@ -546,7 +572,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
 ### .red[Classifier] les serveurs : leur donner un ou plusieurs rôles
 
-### Créer des .red[ressources systèmes] de façon idempotente (fichiers, repertoires, user, groups, configuration réseau, etc...)
+### Créer des .red[ressources systèmes] de manière .red[idempotente] (fichiers, repertoires, user, groups, configuration réseau, etc...)
 
 ### Créer des fichiers de configuration à partir de .red[templates] à remplir
 
