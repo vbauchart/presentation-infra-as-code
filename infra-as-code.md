@@ -1242,21 +1242,17 @@ template: with-logo
 
 ## 1. Les gestionnaires de configuration
 
-### Puppet, Ansible
+### Automatise ce qu'on savait faire manuellement
 
-### *Docker* : .grey[Usage permetant d'arriver au même résultat qu'un gestionnaire de configuration]
+### Nécéssite une coopération forte entre Devs et Ops
 
-## 2. Les provisionneurs
+## 2. Les orchestrateurs
 
-### Terraform
+### Sépare plus proprement les responsabilité entre les Devs et les Ops
 
-### *Ansible* : .grey[possède des modules indempotents pour interagir avec des API HTTP CRUD, et non-HTTP comme des switch, des routeurs...]
+## 3. Les provisionneurs
 
-## 3. Les orchestrateurs
-
-### Kubernetes
-
-### *Ansible* : .grey[Le module `shell` permet de lancer des tâches parallèle sur une ferme de calcul]
+### "Infra as Code" des ressources produite par d'autres  (Cloud, Platform Teams, SAAS, ...)
 
 [//]: ################################
 ---
