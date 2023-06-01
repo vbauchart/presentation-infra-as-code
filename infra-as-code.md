@@ -1011,12 +1011,27 @@ Je simplifie à mort
 
 ### Un mini-langage qui décrit la construction de l'image : `Dockerfile`
 
+### Le langage `Dockerfile` permet de faire simplement tout ce que fais un gestionnaire de configuration
+
+## Cadeau bonus
+
 ### Un système d'héritage d'images pour en créer des nouvelles
 
 ### Un système en "couches" (`layers`) qui permet une grande optimisation du stockage et du transfert des images
 
 ### Un protocole de `registry` qui permet de stocker des images sur un serveur central
 
+
+[//]: ################################
+---
+
+## Pourquoi ce système concurence les gestionnaires de configuration ?
+
+### Permet d'effectuer un "pré-déploiement" sans la machine cible
+
+### Pas besoin d'indempotence pour gérer la mise à jour, on recrée l'image from scrach à chaque fois
+
+### Sépare proprement les ressources nécéssaires à l'OS (kernel, réseau, etc...) et les ressources nécéssaires à l'application
 
 [//]: ################################
 ---
@@ -1031,6 +1046,8 @@ Je simplifie à mort
 
 ### Docker peut rediriger un "vrai" port vers un `container`
 
+### On peut dupliquer l'instance à l'infini !! 🚀
+
 [//]: ################################
 ---
 layout: false
@@ -1039,25 +1056,6 @@ template: with-logo
 # DEMO
 
 https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
-
-
-[//]: ################################
----
-layout: true
-template: with-logo
-
-# Docker est-il un gestionnaire de configuration ?
-
-## Plus besoin d'installer des serveurs, il suffit de récupérer l'`image`
-
-## Chaque serveur n'a besoin que d'un démon Docker et rien d'autre
-
-## On peut lancer plusieurs `containers` sans crainte de conflit
-
-[//]: ################################
----
-
-## Plus besoin de gestionnaire de configuration
 
 
 [//]: ################################
@@ -1089,6 +1087,23 @@ template: with-logo
 ### Quand un serveur attend ses limites, il faut créer autre serveur pour lancer les `containers` suivants ?
 
 ## Comment gérer des containers à l'échelle d'un SI ? 🏗️
+
+[//]: ################################
+---
+
+## Famille des orchetstrateurs
+
+### Kubernetes (**k8s** pour les intimes)
+
+### Docker Swarm
+
+### Amazon ECS
+
+### _Redhat Openshift_ (interface à k8s)
+
+### _Rancher_ (interface à k8S)
+
+### .grey[_Mesos_ (discontinued)]
 
 [//]: ################################
 ---
@@ -1128,7 +1143,7 @@ https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
 
 ## Inconvénients 💩
 
-### Déplacement de la complexité sur l'administration de Kubernetes (Sécurité, mise à jour, ...)
+### Déplacement de la complexité sur l'administration de Kubernetes (Sécurité, mise à jour, debug, ...)
 
 ### Devenu standard de-facto, au détriment des autres solutions
 
@@ -1159,7 +1174,16 @@ template: with-logo
 
 ## Famille des provisionners
 
-## Créé pour gérer la création des ressources Cloud
+### Terraform
+
+### Pulumi
+
+### Cloudformation
+
+### *Ansible*
+
+## Créé pour gérer la création des ressources mises à disposition par API HTTP
+
 ### Amazon Web Services
 
 ### Google Cloud Platform
@@ -1169,10 +1193,6 @@ template: with-logo
 ### VMWare
 
 ### OpenStack
-
-### ...
-
-## Plus globablement, c'est un outil spécialisé pour gérer des ressources externes créé par API HTTP CRUD :
 
 ### Active Directory
 
@@ -1185,7 +1205,7 @@ template: with-logo
 
 [//]: ################################
 ---
-## A chaque lancement, Terraform va lire le contenu des fichiers de description (format .red[HCL])
+## A chaque lancement, Terraform va lire le contenu des fichiers de description (langage .red[HCL])
 
 ## Si la ressource distante n'existe pas:
 
