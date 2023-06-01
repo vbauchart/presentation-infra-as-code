@@ -342,9 +342,9 @@ $ git commit -am'upgrade to 10 servers'  # ajoute message pertinent
 $ git push                               # la CI/CD prend le relais
 ```
 
-### Suivre le déploiement dans l'environnement de test ☕
+### Suivre le déploiement de l'environnement de test dans la CI ☕
 
-### Tester
+### Valider
 
 ### Recommencer
 
@@ -361,7 +361,9 @@ $ git checkout master                    # branche de release
 $ git push                               # la CI/CD prend le relais
 ```
 
-### Suivre le déploiement dans l'application de monitoring ☕
+### Suivre le déploiement en production dans la CI ☕
+
+### Vérification du monitoring
 
 --
 .image-flash[![Alt text](img/thats-iac.gif)]
@@ -380,8 +382,6 @@ $ git push                               # la CI/CD prend le relais
 ## 2. Les provisionneurs
 
 ### Terraform
-
-### *Ansible*
 
 ## 3. Les orchestrateurs
 
@@ -478,12 +478,17 @@ systemctl restart nginx
 
 ### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres différents ?
 
+## Passage à l'échelle
+
+### Comment déployer à l'échelle d'un SI ?
+
+### Comment gérer la parallélisation ?
 
 
 [//]: ################################
 ---
 
-## *Petite pause vocabulaire !*
+# *Petite pause vocabulaire !*
 
 ## Idempotence en mathématique
 
@@ -491,11 +496,11 @@ systemctl restart nginx
 
 ### Par exemple, la fonction `abs()` est idempotente :
 
-```
+```js
 abs(abs(x)) = abs(x)
 ```
 
-```
+```js
 abs(-5) = 5
 asb(abs(abs(-5))) = 5
 ```
@@ -568,7 +573,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
 ## Principales fonctionnalités attendues :
 
-### .red[Classifier] les serveurs : leur donner un ou plusieurs rôles
+### .red[Classifier] les serveurs : leur donner un ou plusieurs rôles, avec des paramètres
 
 ### Créer des .red[ressources systèmes] de manière .red[idempotente] (fichiers, repertoires, user, groups, configuration réseau, etc...)
 
@@ -936,7 +941,7 @@ template: with-logo
 
 
 .center[<div class="mermaid">
-  flowchart TD
+flowchart TD
 
   subgraph Ansible
   Playbook([Playbook]) --ssh--> Node1
@@ -947,13 +952,13 @@ template: with-logo
 </div>]
 
 .center[<div class="mermaid">
-  flowchart BT
+flowchart TD
   
   subgraph Puppet
-  Agent1 --request--> Master([Master])
-  Agent2 --request--> Master([Master])
-  Agent3 --request--> Master([Master])
-  Agent4 --request--> Master([Master])
+  Node1 --request--> Master([Master])
+  Node2 --request--> Master([Master])
+  Node3 --request--> Master([Master])
+  Node4 --request--> Master([Master])
   end
 
 </div>]
