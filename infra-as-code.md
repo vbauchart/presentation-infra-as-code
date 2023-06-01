@@ -53,13 +53,11 @@ template: with-logo
 
 ## Parcours
 
-### UPJV DESS ISRI 2005
-
 ### Consultant Devops pour BV Associates (11 ans)
 
-### Ingenico racheté par Worldline (5 ans)
+### Manager équipe CI/CT/CD pour Ingenico (5 ans)
 
-### Arolla depuis 2023
+### Consultant Devops Senior pour Arolla depuis 2023
 
 ## Compétences
 
