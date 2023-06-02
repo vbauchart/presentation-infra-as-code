@@ -1246,13 +1246,20 @@ template: with-logo
 
 ### Nécéssite une coopération forte entre Devs et Ops
 
-## 2. Les orchestrateurs
+### Gèrent aussi bien l'installation système que l'installation applivative
+
+## 2. Les orchestrateurs de containers
 
 ### Sépare plus proprement les responsabilité entre les Devs et les Ops
 
+### Plus complexe pour les Ops, plus simple pour les Devs
+
 ## 3. Les provisionneurs
 
-### "Infra as Code" des ressources produite par d'autres  (Cloud, Platform Teams, SAAS, ...)
+### Utile pour les ressources fournies par un tiers  (Cloud, Platform Teams, SAAS, ...)
+
+### Indispensable pour la création des ressources systèmes (VM, réseau, DB, etc...)
+
 
 [//]: ################################
 ---
@@ -1263,7 +1270,7 @@ template: with-logo
 
 ### Ansible + Kubernetes
 
-### Puppet + Docker
+### Puppet + Kubernetes
 
 ### Terraform + Ansible
 
@@ -1435,9 +1442,9 @@ Cette présentation est faite en Markdown
 
 ## Team Topology (Platform Teams)
 
-### Les équipes de developpements sont résponsable de toute la chaine
+### L'équipe de developpement (_Stream-aligned Team_) gouverne toute la chaine de production de leur logiciel
 
-### Les Platform Teams fourni une "interface" pour interagir avec l'infrastructure
+### Les Ops (_Platform Team_) fournissent des automatisations pour interagir avec l'infrastructure
 
 ???
 
