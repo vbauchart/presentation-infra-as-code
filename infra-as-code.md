@@ -53,13 +53,11 @@ template: with-logo
 
 ## Parcours
 
-### UPJV DESS ISRI 2005
-
 ### Consultant Devops pour BV Associates (11 ans)
 
-### Ingenico racheté par Worldline (5 ans)
+### Manager équipe CI/CT/CD pour Ingenico (5 ans)
 
-### Arolla depuis 2023
+### Consultant Devops Senior pour Arolla depuis 2023
 
 ## Compétences
 
@@ -344,9 +342,9 @@ $ git commit -am'upgrade to 10 servers'  # ajoute message pertinent
 $ git push                               # la CI/CD prend le relais
 ```
 
-### Suivre le déploiement dans l'environnement de test ☕
+### Suivre le déploiement de l'environnement de test dans la CI ☕
 
-### Tester
+### Valider
 
 ### Recommencer
 
@@ -363,7 +361,9 @@ $ git checkout master                    # branche de release
 $ git push                               # la CI/CD prend le relais
 ```
 
-### Suivre le déploiement dans l'application de monitoring ☕
+### Suivre le déploiement en production dans la CI ☕
+
+### Vérification du monitoring
 
 --
 .image-flash[![Alt text](img/thats-iac.gif)]
@@ -382,8 +382,6 @@ $ git push                               # la CI/CD prend le relais
 ## 2. Les provisionneurs
 
 ### Terraform
-
-### *Ansible*
 
 ## 3. Les orchestrateurs
 
@@ -480,12 +478,17 @@ systemctl restart nginx
 
 ### Comment permettre d'avoir plusieurs instances de l'application avec des paramètres différents ?
 
+## Passage à l'échelle
+
+### Comment déployer à l'échelle d'un SI ?
+
+### Comment gérer la parallélisation ?
 
 
 [//]: ################################
 ---
 
-## *Petite pause vocabulaire !*
+# *Petite pause vocabulaire !*
 
 ## Idempotence en mathématique
 
@@ -493,11 +496,11 @@ systemctl restart nginx
 
 ### Par exemple, la fonction `abs()` est idempotente :
 
-```
+```js
 abs(abs(x)) = abs(x)
 ```
 
-```
+```js
 abs(-5) = 5
 asb(abs(abs(-5))) = 5
 ```
@@ -570,7 +573,7 @@ sed 's/^listen 80 /^listen 8080 /' /etc/nginx/conf.d/default.conf
 
 ## Principales fonctionnalités attendues :
 
-### .red[Classifier] les serveurs : leur donner un ou plusieurs rôles
+### .red[Classifier] les serveurs : leur donner un ou plusieurs rôles, avec des paramètres
 
 ### Créer des .red[ressources systèmes] de manière .red[idempotente] (fichiers, repertoires, user, groups, configuration réseau, etc...)
 
@@ -938,7 +941,7 @@ template: with-logo
 
 
 .center[<div class="mermaid">
-  flowchart TD
+flowchart TD
 
   subgraph Ansible
   Playbook([Playbook]) --ssh--> Node1
@@ -949,13 +952,13 @@ template: with-logo
 </div>]
 
 .center[<div class="mermaid">
-  flowchart BT
+flowchart TD
   
   subgraph Puppet
-  Agent1 --request--> Master([Master])
-  Agent2 --request--> Master([Master])
-  Agent3 --request--> Master([Master])
-  Agent4 --request--> Master([Master])
+  Node1 --request--> Master([Master])
+  Node2 --request--> Master([Master])
+  Node3 --request--> Master([Master])
+  Node4 --request--> Master([Master])
   end
 
 </div>]
@@ -1008,12 +1011,27 @@ Je simplifie à mort
 
 ### Un mini-langage qui décrit la construction de l'image : `Dockerfile`
 
+### Le langage `Dockerfile` permet de faire simplement tout ce que fais un gestionnaire de configuration
+
+## Cadeau bonus
+
 ### Un système d'héritage d'images pour en créer des nouvelles
 
 ### Un système en "couches" (`layers`) qui permet une grande optimisation du stockage et du transfert des images
 
 ### Un protocole de `registry` qui permet de stocker des images sur un serveur central
 
+
+[//]: ################################
+---
+
+## Pourquoi ce système concurence les gestionnaires de configuration ?
+
+### Permet d'effectuer un "pré-déploiement" sans la machine cible
+
+### Pas besoin d'indempotence pour gérer la mise à jour, on recrée l'image from scrach à chaque fois
+
+### Sépare proprement les ressources nécéssaires à l'OS (kernel, réseau, etc...) et les ressources nécéssaires à l'application
 
 [//]: ################################
 ---
@@ -1028,6 +1046,8 @@ Je simplifie à mort
 
 ### Docker peut rediriger un "vrai" port vers un `container`
 
+### On peut dupliquer l'instance à l'infini !! 🚀
+
 [//]: ################################
 ---
 layout: false
@@ -1036,25 +1056,6 @@ template: with-logo
 # DEMO
 
 https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
-
-
-[//]: ################################
----
-layout: true
-template: with-logo
-
-# Docker est-il un gestionnaire de configuration ?
-
-## Plus besoin d'installer des serveurs, il suffit de récupérer l'`image`
-
-## Chaque serveur n'a besoin que d'un démon Docker et rien d'autre
-
-## On peut lancer plusieurs `containers` sans crainte de conflit
-
-[//]: ################################
----
-
-## Plus besoin de gestionnaire de configuration
 
 
 [//]: ################################
@@ -1086,6 +1087,23 @@ template: with-logo
 ### Quand un serveur attend ses limites, il faut créer autre serveur pour lancer les `containers` suivants ?
 
 ## Comment gérer des containers à l'échelle d'un SI ? 🏗️
+
+[//]: ################################
+---
+
+## Famille des orchetstrateurs
+
+### Kubernetes (**k8s** pour les intimes)
+
+### Docker Swarm
+
+### Amazon ECS
+
+### _Redhat Openshift_ (interface à k8s)
+
+### _Rancher_ (interface à k8S)
+
+### .grey[_Mesos_ (discontinued)]
 
 [//]: ################################
 ---
@@ -1125,7 +1143,7 @@ https://github.com/vbauchart/presentation-infra-as-code-k8s-demo
 
 ## Inconvénients 💩
 
-### Déplacement de la complexité sur l'administration de Kubernetes (Sécurité, mise à jour, ...)
+### Déplacement de la complexité sur l'administration de Kubernetes (Sécurité, mise à jour, debug, ...)
 
 ### Devenu standard de-facto, au détriment des autres solutions
 
@@ -1156,7 +1174,16 @@ template: with-logo
 
 ## Famille des provisionners
 
-## Créé pour gérer la création des ressources Cloud
+### Terraform
+
+### Pulumi
+
+### Cloudformation
+
+### *Ansible*
+
+## Créé pour gérer la création des ressources mises à disposition par API HTTP
+
 ### Amazon Web Services
 
 ### Google Cloud Platform
@@ -1166,10 +1193,6 @@ template: with-logo
 ### VMWare
 
 ### OpenStack
-
-### ...
-
-## Plus globablement, c'est un outil spécialisé pour gérer des ressources externes créé par API HTTP CRUD :
 
 ### Active Directory
 
@@ -1182,7 +1205,7 @@ template: with-logo
 
 [//]: ################################
 ---
-## A chaque lancement, Terraform va lire le contenu des fichiers de description (format .red[HCL])
+## A chaque lancement, Terraform va lire le contenu des fichiers de description (langage .red[HCL])
 
 ## Si la ressource distante n'existe pas:
 
@@ -1219,21 +1242,24 @@ template: with-logo
 
 ## 1. Les gestionnaires de configuration
 
-### Puppet, Ansible
+### Automatise ce qu'on savait faire manuellement
 
-### *Docker* : .grey[Usage permetant d'arriver au même résultat qu'un gestionnaire de configuration]
+### Nécéssite une coopération forte entre Devs et Ops
 
-## 2. Les provisionneurs
+### Gèrent aussi bien l'installation système que l'installation applivative
 
-### Terraform
+## 2. Les orchestrateurs de containers
 
-### *Ansible* : .grey[possède des modules indempotents pour interagir avec des API HTTP CRUD, et non-HTTP comme des switch, des routeurs...]
+### Sépare plus proprement les responsabilité entre les Devs et les Ops
 
-## 3. Les orchestrateurs
+### Plus complexe pour les Ops, plus simple pour les Devs
 
-### Kubernetes
+## 3. Les provisionneurs
 
-### *Ansible* : .grey[Le module `shell` permet de lancer des tâches parallèle sur une ferme de calcul]
+### Utile pour les ressources fournies par un tiers  (Cloud, Platform Teams, SAAS, ...)
+
+### Indispensable pour la création des ressources systèmes (VM, réseau, DB, etc...)
+
 
 [//]: ################################
 ---
@@ -1244,7 +1270,7 @@ template: with-logo
 
 ### Ansible + Kubernetes
 
-### Puppet + Docker
+### Puppet + Kubernetes
 
 ### Terraform + Ansible
 
@@ -1416,9 +1442,9 @@ Cette présentation est faite en Markdown
 
 ## Team Topology (Platform Teams)
 
-### Les équipes de developpements sont résponsable de toute la chaine
+### L'équipe de developpement (_Stream-aligned Team_) gouverne toute la chaine de production de leur logiciel
 
-### Les Platform Teams fourni une "interface" pour interagir avec l'infrastructure
+### Les Ops (_Platform Team_) fournissent des automatisations pour interagir avec l'infrastructure
 
 ???
 
